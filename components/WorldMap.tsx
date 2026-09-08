@@ -29,7 +29,7 @@ export function WorldMap() {
             ))}
           </div>
           <svg className="map-svg" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <g fill="none" stroke="rgba(100,170,230,0.18)" strokeWidth="1">
+            <g className="world-grid" fill="none" strokeWidth="1">
               {[...Array(12)].map((_, i) => <line key={`h${i}`} x1="0" y1={i * 45} x2="1000" y2={i * 45} />)}
               {[...Array(22)].map((_, i) => <line key={`v${i}`} x1={i * 47} y1="0" x2={i * 47} y2="500" />)}
             </g>

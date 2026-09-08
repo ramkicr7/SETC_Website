@@ -31,8 +31,8 @@ export default function DubaiPage() {
         <div className="container dubai-experience-content">
           <Reveal>
             <div className="eyebrow eyebrow-light"><span /> Discover Dubai</div>
-            <h2 className="dubai-experience-title">Learn in Dubai<br />Live the Experience</h2>
-            <p className="dubai-experience-text">Dubai is a dynamic international hub where learners from many backgrounds come together to study, work and grow. As a Dubai-based training center, SETC is positioned in one of the world&apos;s most connected cities.</p>
+            <h2 className="dubai-experience-title">Learn in Dubai<br />Grow in a global city</h2>
+            <p className="dubai-experience-text">Dubai brings together cultures, ambition and opportunity. At SETC, your learning experience extends beyond the classroom into one of the world&apos;s most connected and welcoming cities.</p>
           </Reveal>
         </div>
       </section>

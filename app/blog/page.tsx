@@ -24,6 +24,13 @@ export default function BlogPage() {
 
       <section className="content-section">
         <div className="container">
+          <div className="blog-intro">
+            <div>
+              <div className="eyebrow"><span /> The SETC journal</div>
+              <h2>Ideas for your next step</h2>
+            </div>
+            <p>Practical guidance, learning insights and destination inspiration to help you move forward with confidence.</p>
+          </div>
           {blogPosts.length > 0 ? (
             <div className="blog-grid">
               {blogPosts.map((post, i) => (
