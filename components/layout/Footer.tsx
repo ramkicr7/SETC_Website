@@ -27,7 +27,7 @@ export function Footer() {
               <Image src="/assets/images/logos/SETC_(1).png" alt="Students Everywhere Training Center" width={56} height={56} />
               <span><strong>Students Everywhere</strong><small>Training Center</small></span>
             </Link>
-            <p>Dubai-based training center helping learners develop English language skills and prepare for internationally recognised examinations.</p>
+            <p>A connected education ecosystem bringing together specialised brands across language training, test preparation and international education opportunities.</p>
             <p className="footer-tagline">Learn. Grow. Go Everywhere.</p>
           </div>
           <div className="footer-links">
@@ -68,8 +68,9 @@ export function Footer() {
       <div className="container footer-bottom">
         <div className="footer-brands">
           <span>Associated Brands:</span>
-          <Link href="/englishwise" className="footer-brand-tag">EnglishWise UAE</Link>
+          <a href="https://www.studentsdubai.com" target="_blank" rel="noopener noreferrer" className="footer-brand-tag">Students Dubai</a>
           <Link href="/language-skills" className="footer-brand-tag">Language Skills Dubai</Link>
+          <a href="https://www.englishwise.ae/" target="_blank" rel="noopener noreferrer" className="footer-brand-tag">EnglishWise UAE</a>
         </div>
         <span>© {new Date().getFullYear()} Students Everywhere Training Center. All rights reserved.</span>
       </div>
