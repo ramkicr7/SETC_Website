@@ -64,11 +64,21 @@ export function Header() {
                 </Link>
                 {item.children && openDropdown === item.href && (
                   <div className="dropdown-menu">
-                    {item.children.map((child) => (
-                      <Link key={child.href} href={child.href} className={pathname === child.href ? 'dropdown-active' : ''}>
-                        {child.label}
-                      </Link>
-                    ))}
+                    {item.children.map((child) => {
+                      const isExternal = child.href.startsWith('http');
+                      if (isExternal) {
+                        return (
+                          <a key={child.href} href={child.href} target="_blank" rel="noopener noreferrer">
+                            {child.label}
+                          </a>
+                        );
+                      }
+                      return (
+                        <Link key={child.href} href={child.href} className={pathname === child.href ? 'dropdown-active' : ''}>
+                          {child.label}
+                        </Link>
+                      );
+                    })}
                   </div>
                 )}
               </div>
@@ -103,9 +113,13 @@ export function Header() {
                       {mobileExpanded === item.href && (
                         <div className="mobile-nav-children">
                           <Link href={item.href}>View all {item.label}</Link>
-                          {item.children.map((child) => (
-                            <Link key={child.href} href={child.href}>{child.label}</Link>
-                          ))}
+                          {item.children.map((child) => {
+                            const isExternal = child.href.startsWith('http');
+                            if (isExternal) {
+                              return <a key={child.href} href={child.href} target="_blank" rel="noopener noreferrer">{child.label}</a>;
+                            }
+                            return <Link key={child.href} href={child.href}>{child.label}</Link>;
+                          })}
                         </div>
                       )}
                     </>
