@@ -87,40 +87,26 @@ export const navItems: NavItem[] = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   {
-    label: 'Courses',
-    href: '/courses',
-    children: [
-      { label: 'IELTS Preparation', href: '/courses/ielts' },
-      { label: 'PTE Preparation', href: '/courses/pte' },
-      { label: 'OET Preparation', href: '/courses/oet' },
-      { label: 'NAATI CCL', href: '/courses/naati-ccl' },
-      { label: 'CELPIP Preparation', href: '/courses/celpip' },
-      { label: 'LanguageCert', href: '/courses/languagecert' },
-      { label: 'Spoken English', href: '/courses/spoken-english' },
-      { label: 'English Language Skills', href: '/courses/english-language-skills' },
-    ],
-  },
-  {
-    label: 'Learning',
-    href: '/learning-options',
-    children: [
-      { label: 'Classroom Training', href: '/learning-options' },
-      { label: 'Online Training', href: '/learning-options' },
-      { label: 'Learning Options', href: '/learning-options' },
-    ],
-  },
-  { label: 'Student Journey', href: '/student-journey' },
-  { label: 'Dubai', href: '/dubai' },
-  { label: 'Accommodation', href: '/accommodation' },
-  { label: 'Blog', href: '/blog' },
-  {
     label: 'Brands',
     href: '/englishwise',
     children: [
-      { label: 'EnglishWise UAE', href: '/englishwise' },
+      { label: 'Students Dubai', href: 'https://www.studentsdubai.com' },
       { label: 'Language Skills Dubai', href: '/language-skills' },
+      { label: 'EnglishWise UAE', href: '/englishwise' },
     ],
   },
+  {
+    label: 'Services',
+    href: '/services',
+    children: [
+      { label: 'Language Training', href: '/courses/spoken-english' },
+      { label: 'Test Preparation', href: '/courses' },
+      { label: 'Study Abroad', href: '/global-learning' },
+    ],
+  },
+  { label: 'Courses', href: '/courses' },
+  { label: 'Dubai', href: '/dubai' },
+  { label: 'Blog', href: '/blog' },
   { label: 'FAQ', href: '/faq' },
   { label: 'Contact', href: '/contact' },
 ];
@@ -207,6 +193,56 @@ export const languages = [
   { name: '中文', script: '中文', native: 'Chinese / Mandarin', note: 'CMS-ready — available when confirmed' },
   { name: 'Français', script: 'Français', native: 'French', note: 'CMS-ready — available when confirmed' },
   { name: 'العربية', script: 'العربية', native: 'Arabic', note: 'CMS-ready — available when confirmed' },
+];
+
+export type Brand = {
+  name: string;
+  tagline: string;
+  description: string;
+  focus: string[];
+  logo: string;
+  url?: string;
+  internalHref?: string;
+};
+
+export const brands: Brand[] = [
+  {
+    name: 'Students Dubai',
+    tagline: 'Languages · Test Preparation · Study Abroad',
+    description: 'Supporting learners through language development, examination preparation and international study opportunities.',
+    focus: ['Languages', 'Test Preparation', 'Study Abroad'],
+    logo: '/assets/images/logos/SETC_(1).png',
+    url: 'https://www.studentsdubai.com',
+  },
+  {
+    name: 'Language Skills Dubai',
+    tagline: 'Language Training',
+    description: 'Focused language training designed to help learners develop practical communication skills.',
+    focus: ['Language Training'],
+    logo: '/assets/images/brands/Languageskills.png',
+    internalHref: '/language-skills',
+  },
+  {
+    name: 'EnglishWise UAE',
+    tagline: 'Test Preparation',
+    description: 'Focused preparation for English language and relevant professional examinations.',
+    focus: ['Test Preparation'],
+    logo: '/assets/images/brands/Englishwise_UAE.png',
+    url: 'https://www.englishwise.ae/',
+  },
+];
+
+export const services = [
+  { num: '01', title: 'Language Training', text: 'Build stronger language and communication skills for academic, professional and everyday opportunities.' },
+  { num: '02', title: 'Test Preparation', text: 'Structured preparation for IELTS, PTE, OET, NAATI CCL, CELPIP, LanguageCert and other relevant examinations.' },
+  { num: '03', title: 'Study Abroad', text: 'Guidance and support for students exploring international study opportunities.' },
+];
+
+export const whySetc = [
+  { num: '01', title: 'Specialised Brand Ecosystem', text: 'Three focused brands under one connected vision — each with clear expertise.' },
+  { num: '02', title: 'Dubai-Based, Globally Minded', text: 'A training ecosystem rooted in Dubai, built for international opportunities.' },
+  { num: '03', title: 'Multiple Learning Pathways', text: 'Classroom and online learning options across language and exam preparation.' },
+  { num: '04', title: 'Focused On Real Opportunities', text: 'Training that supports your next step — wherever it may lead.' },
 ];
 
 export const dubaiGallery = [
