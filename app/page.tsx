@@ -51,30 +51,35 @@ export default function Home() {
     <main className="setc-home">
       <section className="setc-hero" aria-labelledby="hero-title">
         <div className="setc-hero-grid" aria-hidden="true" />
-        <div className="setc-hero-orbit setc-orbit-one" />
-        <div className="setc-hero-orbit setc-orbit-two" />
-        <div className="setc-hero-dots" aria-hidden="true"><i /><i /><i /><i /></div>
+        <div className="setc-hero-ambient" aria-hidden="true" />
+        <div className="setc-hero-orbit setc-orbit-one" aria-hidden="true" />
+        <div className="setc-hero-orbit setc-orbit-two" aria-hidden="true" />
+        <div className="setc-hero-dots" aria-hidden="true"><i /><i /><i /><i /><i /><i /></div>
         <div className="container setc-hero-content">
           <Reveal className="setc-hero-copy">
             <p className="setc-kicker"><Globe2 size={15} /> Students Everywhere Training Center</p>
-            <h1 id="hero-title">Learning without borders.<br /><em>Opportunities without limits.</em></h1>
-            <p className="setc-hero-lede">A Dubai-based education ecosystem connecting specialised brands in language training, test preparation and international study opportunities.</p>
+            <h1 id="hero-title"><span>Learning</span><span>without <em>borders.</em></span></h1>
+            <p className="setc-hero-lede">Bringing together specialised education brands in language training, test preparation and international study opportunities.</p>
+            <div className="setc-hero-path"><span>Building futures through</span><strong>LANGUAGES</strong><span className="setc-path-arrow">↓</span></div>
             <div className="setc-actions">
-              <a className="button button-blue" href="#brands">Explore our brands <ArrowRight size={17} /></a>
-              <Link className="setc-text-link" href="/contact">Contact us <ArrowUpRight size={16} /></Link>
+              <a className="button button-blue" href="#brands">Explore SETC <ArrowRight size={17} /></a>
+              <Link className="setc-text-link" href="/contact">Enquire now <ArrowUpRight size={16} /></Link>
             </div>
           </Reveal>
           <Reveal className="setc-network" delay={180} aria-label="Global education network visual">
-            <svg viewBox="0 0 520 440" role="img" aria-label="Connected global learning network">
-              <defs><radialGradient id="setcGlow"><stop stopColor="#5bbcff" stopOpacity=".35" /><stop offset="1" stopColor="#5bbcff" stopOpacity="0" /></radialGradient></defs>
-              <circle cx="270" cy="220" r="170" fill="url(#setcGlow)" /><ellipse cx="270" cy="220" rx="162" ry="166" fill="none" stroke="currentColor" opacity=".35" /><ellipse cx="270" cy="220" rx="85" ry="166" fill="none" stroke="currentColor" opacity=".22" /><ellipse cx="270" cy="220" rx="162" ry="65" fill="none" stroke="currentColor" opacity=".22" />
-              <path d="M115 170 C190 80 330 110 420 185 M125 290 C220 340 340 305 426 235 M270 55 C235 135 245 250 275 385" fill="none" stroke="currentColor" opacity=".28" />
-              <circle cx="270" cy="220" r="7" fill="#8bd4ff" /><circle cx="270" cy="220" r="16" fill="none" stroke="#8bd4ff" opacity=".55" className="setc-pulse" />
-              <circle cx="150" cy="150" r="4" fill="#8bd4ff" /><circle cx="397" cy="182" r="4" fill="#8bd4ff" /><circle cx="350" cy="315" r="4" fill="#8bd4ff" />
+            <svg viewBox="0 0 620 520" role="img" aria-label="A global education network anchored in Dubai">
+              <defs><radialGradient id="setcGlow"><stop stopColor="#38bdf8" stopOpacity=".28" /><stop offset="1" stopColor="#38bdf8" stopOpacity="0" /></radialGradient><filter id="setcBlur"><feGaussianBlur stdDeviation="16" /></filter></defs>
+              <circle cx="350" cy="260" r="190" fill="url(#setcGlow)" filter="url(#setcBlur)" /><ellipse cx="350" cy="260" rx="190" ry="194" fill="none" stroke="currentColor" opacity=".28" /><ellipse cx="350" cy="260" rx="96" ry="194" fill="none" stroke="currentColor" opacity=".18" /><ellipse cx="350" cy="260" rx="190" ry="78" fill="none" stroke="currentColor" opacity=".2" /><ellipse cx="350" cy="260" rx="190" ry="132" fill="none" stroke="currentColor" opacity=".12" />
+              <path className="setc-network-line" d="M350 260 C282 198 218 140 112 110 M350 260 C445 215 500 164 552 105 M350 260 C258 302 190 355 108 410 M350 260 C432 306 493 363 556 417 M350 260 C266 252 192 250 82 258" fill="none" stroke="currentColor" opacity=".5" />
+              <circle cx="350" cy="260" r="9" fill="#b8e8ff" /><circle cx="350" cy="260" r="27" fill="none" stroke="#70cfff" opacity=".65" className="setc-pulse" />
+              <g className="setc-network-node"><circle cx="112" cy="110" r="5" /><text x="92" y="88">London</text></g><g className="setc-network-node"><circle cx="552" cy="105" r="5" /><text x="530" y="82">Singapore</text></g><g className="setc-network-node"><circle cx="108" cy="410" r="5" /><text x="76" y="441">Toronto</text></g><g className="setc-network-node"><circle cx="556" cy="417" r="5" /><text x="536" y="449">Sydney</text></g><g className="setc-network-node"><circle cx="82" cy="258" r="5" /><text x="31" y="253">Mumbai</text></g>
+              <text className="setc-dubai-label" x="370" y="292">DUBAI</text>
             </svg>
-            <span className="setc-network-label">Dubai → everywhere</span>
+            <span className="setc-network-label">Global education hub <i>Dubai</i></span>
+            <span className="setc-network-fragment">↗ Global opportunities</span>
           </Reveal>
         </div>
+        <a className="setc-scroll-cue" href="#about"><span>Explore SETC</span><i /></a>
       </section>
 
       <section className="setc-about section-pad" id="about" aria-labelledby="about-title">
