@@ -11,10 +11,10 @@ const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-int
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.studentsdubai.com'),
   title: {
-    default: 'Students Everywhere Training Center | Dubai English Language Training',
+    default: 'Students Everywhere Training Center | Language, Test Preparation & Study Abroad in Dubai',
     template: '%s | Students Everywhere Training Center',
   },
-  description: 'Dubai-based training center helping learners develop English language skills and prepare for IELTS, PTE, OET, NAATI CCL, CELPIP, LanguageCert and Spoken English. Classroom and online training options.',
+  description: 'Students Everywhere Training Center is a Dubai-based education ecosystem connecting specialised brands in language training, test preparation and international study opportunities.',
   keywords: ['English training Dubai', 'IELTS preparation Dubai', 'PTE training Dubai', 'OET preparation', 'language training UAE', 'Spoken English Dubai'],
   openGraph: {
     title: 'Students Everywhere Training Center',

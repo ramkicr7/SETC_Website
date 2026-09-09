@@ -20,7 +20,7 @@ export default function AccommodationPage() {
           <div className="breadcrumb"><Link href="/">Home</Link> / <span>Accommodation</span></div>
           <div className="eyebrow eyebrow-light" style={{ marginTop: 16 }}><span /> Your stay</div>
           <h1>Your Stay in Dubai</h1>
-          <p>Comfortable accommodation options for learners during their training in Dubai.</p>
+          <p>International-standard rooms and considered stay arrangements for learners during their training in Dubai.</p>
         </div>
       </section>
 
@@ -34,11 +34,12 @@ export default function AccommodationPage() {
           </Reveal>
           <Reveal className="about-copy" delay={150}>
             <div className="eyebrow"><span /> Accommodation Overview</div>
-            <h2>Learning + Living + Dubai</h2>
-            <p className="lead">We understand that comfortable accommodation is part of a positive learning experience.</p>
-            <p>Accommodation options may be available for learners attending training in Dubai. Our team can discuss currently available options and help you find a suitable arrangement for your stay.</p>
-            <p>Detailed information about room types, facilities, pricing and availability will be provided directly by our team and published here once verified.</p>
-            <Link className="button button-blue" href="#enquire">Enquire About Accommodation <ArrowRight size={17} /></Link>
+            <h2>International-standard living in Dubai</h2>
+            <p className="lead">A well-chosen room gives learners the calm, comfort and confidence to make the most of their international experience.</p>
+            <p>Our accommodation arrangements are designed around the expectations of learners arriving from around the world, with clean, comfortable rooms and practical access to the SETC learning environment.</p>
+            <p>Room types, facilities, pricing and availability are confirmed personally by our team so every learner receives clear, reliable information before travelling.</p>
+            <div className="accommodation-standard"><Building2 size={14} /> International-standard rooms</div>
+            <div style={{ marginTop: 24 }}><Link className="button button-blue" href="#enquire">Enquire About Accommodation <ArrowRight size={17} /></Link></div>
           </Reveal>
         </div>
       </section>

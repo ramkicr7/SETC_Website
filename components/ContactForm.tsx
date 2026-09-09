@@ -4,15 +4,32 @@ import { type FormEvent, useState } from 'react';
 import { ArrowRight, Check, Loader2 } from 'lucide-react';
 import { courses } from '@/lib/data';
 
-type Status = 'idle' | 'submitting' | 'success';
+type Status = 'idle' | 'submitting' | 'success' | 'error';
 
 export function ContactForm({ compact = false }: { compact?: boolean }) {
   const [status, setStatus] = useState<Status>('idle');
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus('submitting');
-    setTimeout(() => setStatus('success'), 1200);
+    setError('');
+    const form = e.currentTarget;
+    const payload = Object.fromEntries(new FormData(form).entries());
+    try {
+      const response = await fetch('/api/enquiries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...payload, sourcePage: window.location.pathname }),
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || 'Please try again.');
+      setStatus('success');
+      form.reset();
+    } catch (submissionError) {
+      setError(submissionError instanceof Error ? submissionError.message : 'Please try again.');
+      setStatus('error');
+    }
   };
 
   if (status === 'success') {
@@ -44,6 +61,7 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
       <button className="button button-blue form-submit" type="submit" disabled={status === 'submitting'}>
         {status === 'submitting' ? <>Sending... <Loader2 size={17} className="spin" /></> : <>Send Enquiry <ArrowRight size={17} /></>}
       </button>
+      {status === 'error' && <p className="form-error" role="alert">{error}</p>}
       <p className="form-note">We&apos;ll use your details only to respond to this enquiry.</p>
     </form>
   );

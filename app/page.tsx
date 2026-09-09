@@ -1,272 +1,106 @@
-'use client';
+'use client'
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { useEffect, useRef } from 'react';
-import { ArrowRight, ArrowUpRight, Globe as Globe2, Sparkles, Users, MapPin, MessageCircle } from 'lucide-react';
-import { Reveal } from '@/components/Reveal';
-import { MagneticButton } from '@/components/MagneticButton';
-import { ParallaxLayer } from '@/components/ParallaxLayer';
-import { brands, services, whySetc, WHATSAPP_LINK, ADDRESS_LINES, PHONE_LINK, PHONE_NUMBER } from '@/lib/data';
+import Image from 'next/image'
+import Link from 'next/link'
+import { ArrowUpRight, ArrowRight, Globe2, MessageCircle } from 'lucide-react'
+import { Reveal } from '@/components/Reveal'
+import { WHATSAPP_LINK } from '@/lib/data'
+
+const brands = [
+  {
+    name: 'Students Dubai',
+    focus: 'Languages · Test Preparation · Study Abroad',
+    description: 'Supporting learners through language development, examination preparation and international study opportunities.',
+    href: 'https://www.studentsdubai.com',
+    logo: '/assets/images/logos/SETC_(1).png',
+    external: true,
+  },
+  {
+    name: 'Language Skills Dubai',
+    focus: 'Language Training',
+    description: 'Focused language training designed to help learners develop practical communication skills.',
+    href: '/language-skills',
+    logo: '/assets/images/brands/Languageskills.png',
+    external: false,
+  },
+  {
+    name: 'EnglishWise UAE',
+    focus: 'Test Preparation',
+    description: 'Focused preparation for English language and relevant professional examinations.',
+    href: 'https://www.englishwise.ae/',
+    logo: '/assets/images/brands/Englishwise_UAE.png',
+    external: true,
+  },
+]
+
+const services = [
+  ['01', 'Language Training', 'Build stronger language and communication skills for academic, professional and everyday opportunities.'],
+  ['02', 'Test Preparation', 'Structured preparation for IELTS, PTE, OET, NAATI CCL, CELPIP, LanguageCert and other relevant examinations.'],
+  ['03', 'Study Abroad', 'Guidance and support for students exploring international study opportunities.'],
+]
+
+const reasons = [
+  ['01', 'Specialised brand ecosystem', 'Focused services connected by one shared vision.'],
+  ['02', 'Dubai-based, globally minded', 'A local foundation for international opportunity.'],
+  ['03', 'Multiple learning pathways', 'The right direction for different goals and next steps.'],
+  ['04', 'Focused on real opportunities', 'Practical preparation that keeps your ambitions moving.'],
+]
 
 export default function Home() {
   return (
-    <main>
-      {/* ============ HERO ============ */}
-      <section className="hero-v2" aria-label="Hero">
-        <div className="hero-v2-grid" aria-hidden="true">
-          <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
-            <g fill="none" stroke="rgba(100,170,230,0.06)" strokeWidth="0.5">
-              {Array.from({ length: 16 }).map((_, i) => (
-                <line key={`v${i}`} x1={i * 50} y1="0" x2={i * 50} y2="600" />
-              ))}
-              {Array.from({ length: 12 }).map((_, i) => (
-                <line key={`h${i}`} x1="0" y1={i * 50} x2="800" y2={i * 50} />
-              ))}
-            </g>
-            <g fill="rgba(100,170,230,0.08)">
-              {[[120,140],[200,100],[300,180],[400,120],[480,200],[560,140],[620,220],[680,160],[160,280],[260,320],[360,300],[440,340],[540,320],[620,380],[700,300],[100,220],[240,220],[420,260],[520,280],[660,340]].map(([cx, cy], i) => (
-                <circle key={i} cx={cx} cy={cy} r="2" className="hero-map-point" style={{ animationDelay: `${(i % 6) * 0.8}s` }} />
-              ))}
-            </g>
-            <g stroke="rgba(100,170,230,0.07)" strokeWidth="0.8" fill="none">
-              <path d="M200,140 Q300,80 400,180" className="hero-conn-line" />
-              <path d="M400,180 Q480,120 560,200" className="hero-conn-line" style={{ animationDelay: '1s' }} />
-              <path d="M560,200 Q630,150 680,220" className="hero-conn-line" style={{ animationDelay: '2s' }} />
-              <path d="M200,140 Q160,220 160,280" className="hero-conn-line" style={{ animationDelay: '0.5s' }} />
-              <path d="M400,180 Q380,260 360,300" className="hero-conn-line" style={{ animationDelay: '1.5s' }} />
-            </g>
-          </svg>
+    <main className="setc-home">
+      <section className="setc-hero" aria-labelledby="hero-title">
+        <div className="setc-hero-grid" aria-hidden="true" />
+        <div className="setc-hero-ambient" aria-hidden="true" />
+        <div className="setc-hero-orbit setc-orbit-one" aria-hidden="true" />
+        <div className="setc-hero-orbit setc-orbit-two" aria-hidden="true" />
+        <div className="setc-hero-dots" aria-hidden="true"><i /><i /><i /><i /><i /><i /></div>
+        <div className="container setc-hero-content">
+          <Reveal className="setc-hero-copy">
+            <p className="setc-kicker"><Globe2 size={15} /> Students Everywhere Training Center</p>
+            <h1 id="hero-title"><span>Learning</span><span>without <em>borders.</em></span></h1>
+            <p className="setc-hero-lede">Bringing together specialised education brands in language training, test preparation and international study opportunities.</p>
+            <div className="setc-hero-path"><span>Building futures through</span><strong>LANGUAGES</strong><span className="setc-path-arrow">↓</span></div>
+            <div className="setc-actions">
+              <a className="button button-blue" href="#brands">Explore SETC <ArrowRight size={17} /></a>
+              <Link className="setc-text-link" href="/contact">Enquire now <ArrowUpRight size={16} /></Link>
+            </div>
+          </Reveal>
+          <Reveal className="setc-network" delay={180} aria-label="Global education network visual">
+            <svg viewBox="0 0 620 520" role="img" aria-label="A global education network anchored in Dubai">
+              <defs><radialGradient id="setcGlow"><stop stopColor="#38bdf8" stopOpacity=".28" /><stop offset="1" stopColor="#38bdf8" stopOpacity="0" /></radialGradient><filter id="setcBlur"><feGaussianBlur stdDeviation="16" /></filter></defs>
+              <circle cx="350" cy="260" r="190" fill="url(#setcGlow)" filter="url(#setcBlur)" /><ellipse cx="350" cy="260" rx="190" ry="194" fill="none" stroke="currentColor" opacity=".28" /><ellipse cx="350" cy="260" rx="96" ry="194" fill="none" stroke="currentColor" opacity=".18" /><ellipse cx="350" cy="260" rx="190" ry="78" fill="none" stroke="currentColor" opacity=".2" /><ellipse cx="350" cy="260" rx="190" ry="132" fill="none" stroke="currentColor" opacity=".12" />
+              <path className="setc-network-line" d="M350 260 C282 198 218 140 112 110 M350 260 C445 215 500 164 552 105 M350 260 C258 302 190 355 108 410 M350 260 C432 306 493 363 556 417 M350 260 C266 252 192 250 82 258" fill="none" stroke="currentColor" opacity=".5" />
+              <circle cx="350" cy="260" r="9" fill="#b8e8ff" /><circle cx="350" cy="260" r="27" fill="none" stroke="#70cfff" opacity=".65" className="setc-pulse" />
+              <g className="setc-network-node"><circle cx="112" cy="110" r="5" /><text x="92" y="88">London</text></g><g className="setc-network-node"><circle cx="552" cy="105" r="5" /><text x="530" y="82">Singapore</text></g><g className="setc-network-node"><circle cx="108" cy="410" r="5" /><text x="76" y="441">Toronto</text></g><g className="setc-network-node"><circle cx="556" cy="417" r="5" /><text x="536" y="449">Sydney</text></g><g className="setc-network-node"><circle cx="82" cy="258" r="5" /><text x="31" y="253">Mumbai</text></g>
+              <text className="setc-dubai-label" x="370" y="292">DUBAI</text>
+            </svg>
+            <span className="setc-network-label">Global education hub <i>Dubai</i></span>
+            <span className="setc-network-fragment">↗ Global opportunities</span>
+          </Reveal>
         </div>
+        <a className="setc-scroll-cue" href="#about"><span>Explore SETC</span><i /></a>
+      </section>
 
-        <div className="hero-v2-content">
-          <div className="container hero-v2-inner">
-            <div className="hero-v2-copy">
-              <div className="hero-v2-eyebrow"><Sparkles size={14} /> STUDENTS EVERYWHERE TRAINING CENTER</div>
-              <h1 className="hero-v2-title">
-                <span className="hero-v2-line hero-v2-line-1">Learning Without Borders.</span>
-                <span className="hero-v2-line hero-v2-line-2 hero-v2-line-accent">Opportunities Without Limits.</span>
-              </h1>
-              <p className="hero-v2-text">Students Everywhere Training Center brings together specialised brands in language training, test preparation and international education pathways.</p>
-              <div className="hero-v2-actions">
-                <MagneticButton href="/englishwise" className="button button-blue">
-                  Explore Our Brands <ArrowRight size={17} />
-                </MagneticButton>
-                <MagneticButton href="/contact" className="text-link light-link">
-                  Contact Us <ArrowUpRight size={17} />
-                </MagneticButton>
-              </div>
-              <div className="hero-v2-meta">
-                <div className="hero-v2-meta-item"><Globe2 size={16} /> Dubai · Global · Connected</div>
-                <div className="hero-v2-meta-item"><Users size={16} /> 3 Specialised Brands</div>
-              </div>
-            </div>
-            <div className="hero-globe-wrap">
-              <div className="hero-glow" />
-              <div className="hero-globe-canvas">
-                <div className="hero-ring hero-ring-1" />
-                <div className="hero-ring hero-ring-2" />
-                <div className="hero-ring hero-ring-3" />
-                <div className="hero-node hero-node-dubai" />
-                <div className="hero-globe-labels">
-                  <span className="hero-globe-label" style={{ top: '12%', left: '20%' }}>London</span>
-                  <span className="hero-globe-label" style={{ top: '25%', right: '12%' }}>Sydney</span>
-                  <span className="hero-globe-label" style={{ bottom: '20%', left: '15%' }}>Toronto</span>
-                  <span className="hero-globe-label" style={{ bottom: '15%', right: '20%' }}>Singapore</span>
-                </div>
-              </div>
-              <div className="hero-globe-mobile">
-                <div className="hero-glow" />
-                <div className="hero-ring hero-ring-1" style={{ width: 260, height: 260 }} />
-                <div className="hero-ring hero-ring-2" style={{ width: 200, height: 200 }} />
-                <div className="hero-node hero-node-dubai" />
-              </div>
-            </div>
-          </div>
+      <section className="setc-about section-pad" id="about" aria-labelledby="about-title">
+        <div className="container setc-about-grid">
+          <Reveal><p className="eyebrow"><span /> About SETC</p><h2 id="about-title">More than training.<br /><span>A connected education ecosystem.</span></h2></Reveal>
+          <Reveal className="setc-about-copy" delay={120}><p className="lead">Students Everywhere Training Center (SETC) is a Dubai-based parent organisation bringing together specialised brands focused on language training, test preparation and international education opportunities.</p><p>Our ecosystem gives learners access to focused services through specialised brands, while remaining connected through a shared vision of helping people develop skills and move towards new opportunities.</p></Reveal>
         </div>
       </section>
 
-      {/* ============ ABOUT SETC ============ */}
-      <section className="about-v2" aria-label="About SETC">
-        <div className="container about-v2-grid">
-          <Reveal className="about-v2-left">
-            <div className="eyebrow"><span /> About SETC</div>
-            <h2>More Than Training.<br />A Connected Education Ecosystem.</h2>
-            <p>Students Everywhere Training Center (SETC) is a Dubai-based parent organisation bringing together specialised brands focused on language training, test preparation and international education opportunities.</p>
-            <p>Our ecosystem allows learners to access focused services through specialised brands, while remaining connected through a shared vision of helping people develop skills and move towards new opportunities.</p>
-          </Reveal>
-          <Reveal className="about-v2-right" delay={150}>
-            <div className="hierarchy-tree">
-              <div className="hierarchy-item">
-                <div className="hierarchy-item-main">SETC</div>
-                <div className="hierarchy-sub-tag">Parent Organisation · Dubai, UAE</div>
-              </div>
-              <div className="hierarchy-item">
-                <div className="hierarchy-sub">Students Dubai</div>
-                <div className="hierarchy-sub-tag">Languages · Test Preparation · Study Abroad</div>
-              </div>
-              <div className="hierarchy-item">
-                <div className="hierarchy-sub">Language Skills Dubai</div>
-                <div className="hierarchy-sub-tag">Language Training</div>
-              </div>
-              <div className="hierarchy-item">
-                <div className="hierarchy-sub">EnglishWise UAE</div>
-                <div className="hierarchy-sub-tag">Test Preparation</div>
-              </div>
-            </div>
-          </Reveal>
+      <section className="setc-brands section-pad" id="brands" aria-labelledby="brands-title">
+        <div className="container"><Reveal className="setc-section-intro"><p className="eyebrow"><span /> Our brands</p><h2 id="brands-title">One connected vision.</h2><p>Specialised brands. Focused expertise. Connected opportunities.</p></Reveal>
+          <Reveal className="setc-ecosystem-line" aria-hidden="true"><span>SETC</span><i /><i /><i /></Reveal>
+          <div className="setc-brand-grid">{brands.map((brand, index) => { const content = <><div className="setc-brand-logo"><Image src={brand.logo} alt={`${brand.name} logo`} width={220} height={110} /></div><span className="setc-brand-index">0{index + 1}</span><h3>{brand.name}</h3><p className="setc-brand-focus">{brand.focus}</p><p>{brand.description}</p><span className="setc-brand-link">Explore brand <ArrowUpRight size={16} /></span></>; return <Reveal as="article" key={brand.name} className="setc-brand-card" delay={index * 100}>{brand.external ? <a href={brand.href} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${brand.name}`}>{content}</a> : <Link href={brand.href}>{content}</Link>}</Reveal> })}</div>
         </div>
       </section>
 
-      {/* ============ BRAND ECOSYSTEM ============ */}
-      <section className="ecosystem-section" aria-label="Our Brands">
-        <div className="container">
-          <Reveal className="ecosystem-head">
-            <div className="eyebrow" style={{ justifyContent: 'center' }}><span /> Our Brands</div>
-            <h2>Our Brands.<br />One Connected Vision.</h2>
-            <p>Specialised brands. Focused expertise. Connected opportunities.</p>
-          </Reveal>
+      <section className="setc-services section-pad" id="services" aria-labelledby="services-title"><div className="container"><Reveal><p className="eyebrow"><span /> What we help you move towards</p><h2 id="services-title">Three pathways.<br /><span>Many possibilities.</span></h2></Reveal><div className="setc-service-list">{services.map(([number, title, text], index) => <Reveal as="article" className="setc-service-row" key={title} delay={index * 80}><span className="setc-service-number">{number}</span><h3>{title}</h3><p>{text}</p><ArrowUpRight className="setc-service-arrow" size={22} /></Reveal>)}</div></div></section>
 
-          <Reveal className="ecosystem-diagram">
-            <div className="ecosystem-parent">
-              <div className="ecosystem-parent-badge">
-                <Image src="/assets/images/logos/SETC_(1).png" alt="SETC" width={32} height={32} />
-                Students Everywhere Training Center
-              </div>
-            </div>
+      <section className="setc-why section-pad" aria-labelledby="why-title"><div className="container"><Reveal className="setc-section-intro"><p className="eyebrow"><span /> Why SETC</p><h2 id="why-title">Built around your next step.</h2></Reveal><div className="setc-reason-grid">{reasons.map(([number, title, text], index) => <Reveal key={title} className="setc-reason" delay={index * 80}><span>{number}</span><h3>{title}</h3><p>{text}</p></Reveal>)}</div></div></section>
 
-            <div className="ecosystem-lines" aria-hidden="true">
-              <svg viewBox="0 0 600 60" preserveAspectRatio="none">
-                <path className="ecosystem-line ecosystem-line-1" d="M300,0 L300,30 L100,30 L100,60" />
-                <path className="ecosystem-line ecosystem-line-2" d="M300,0 L300,60" />
-                <path className="ecosystem-line ecosystem-line-3" d="M300,0 L300,30 L500,30 L500,60" />
-              </svg>
-            </div>
-
-            <div className="ecosystem-brands">
-              {brands.map((brand, i) => (
-                <Reveal as="article" key={brand.name} className="ecosystem-brand glow-hover" delay={i * 120}>
-                  {brand.url ? (
-                    <a href={brand.url} target="_blank" rel="noopener noreferrer" className="ecosystem-brand-link" aria-label={`Visit ${brand.name}`} />
-                  ) : brand.internalHref ? (
-                    <Link href={brand.internalHref} className="ecosystem-brand-link" aria-label={`Visit ${brand.name}`} />
-                  ) : null}
-                  <ArrowUpRight size={18} className="ecosystem-brand-arrow" />
-                  <div className="ecosystem-brand-logo">
-                    <Image src={brand.logo} alt={brand.name} width={120} height={64} style={{ width: 'auto', height: 'auto', maxHeight: 64, objectFit: 'contain' }} />
-                  </div>
-                  <h3 className="ecosystem-brand-name">{brand.name}</h3>
-                  <div className="ecosystem-brand-focus">
-                    {brand.focus.map((f) => (
-                      <span key={f} className="ecosystem-focus-tag">{f}</span>
-                    ))}
-                  </div>
-                  <p className="ecosystem-brand-desc">{brand.description}</p>
-                </Reveal>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ============ SERVICES ============ */}
-      <section className="services-v2" aria-label="Services">
-        <div className="container">
-          <Reveal className="services-v2-head">
-            <div className="eyebrow"><span /> What We Do</div>
-            <h2>What We Help You Move Towards.</h2>
-          </Reveal>
-          <Reveal className="services-v2-list">
-            {services.map((s) => (
-              <div key={s.num} className="service-row">
-                <div className="service-num-big">{s.num}</div>
-                <div className="service-body">
-                  <h3>{s.title}</h3>
-                  <p>{s.text}</p>
-                </div>
-                <ArrowRight size={24} className="service-arrow" />
-              </div>
-            ))}
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ============ WHY SETC ============ */}
-      <section className="why-v2" aria-label="Why SETC">
-        <div className="container">
-          <Reveal className="why-v2-head">
-            <div className="eyebrow eyebrow-light" style={{ justifyContent: 'center' }}><span /> Why SETC</div>
-            <h2>Built Around Your Next Step.</h2>
-          </Reveal>
-          <div className="why-v2-grid">
-            {whySetc.map((item, i) => (
-              <Reveal as="article" key={item.num} className="why-v2-item" delay={i * 100}>
-                <div className="why-num-big">{item.num}</div>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ CTA ============ */}
-      <CtaSection />
+      <section className="setc-cta" id="contact" aria-labelledby="cta-title"><div className="setc-cta-grid" aria-hidden="true" /><div className="container setc-cta-inner"><Reveal><p className="setc-kicker">Start with the right direction</p><h2 id="cta-title">Your next opportunity<br /><em>starts with preparation.</em></h2><p>Tell us where you want to go. We&apos;ll help you understand the right pathway.</p><div className="setc-actions"><Link className="button button-blue" href="/contact">Talk to us <ArrowRight size={17} /></Link><a className="button button-outline-light" href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer"><MessageCircle size={17} /> WhatsApp us</a></div></Reveal></div></section>
     </main>
-  );
-}
-
-function CtaSection() {
-  const glowRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const section = glowRef.current?.parentElement;
-    if (!section) return;
-    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const onMove = (e: MouseEvent) => {
-      const rect = section.getBoundingClientRect();
-      const x = e.clientX - rect.left - 300;
-      const y = e.clientY - rect.top - 300;
-      if (glowRef.current) {
-        glowRef.current.style.transform = `translate(${x}px, ${y}px)`;
-      }
-    };
-    section.addEventListener('mousemove', onMove);
-    return () => section.removeEventListener('mousemove', onMove);
-  }, []);
-
-  return (
-    <section className="cta-v2" aria-label="Get started">
-      <div className="cta-v2-bg" aria-hidden="true">
-        <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice">
-          <g fill="none" stroke="rgba(100,170,230,0.08)" strokeWidth="0.5">
-            {Array.from({ length: 16 }).map((_, i) => <line key={`v${i}`} x1={i * 50} y1="0" x2={i * 50} y2="400" />)}
-            {Array.from({ length: 8 }).map((_, i) => <line key={`h${i}`} x1="0" y1={i * 50} x2="800" y2={i * 50} />)}
-          </g>
-          <g stroke="rgba(100,170,230,0.1)" strokeWidth="1" fill="none">
-            <path className="hero-conn-line" d="M150,200 Q300,100 400,200" />
-            <path className="hero-conn-line" style={{ animationDelay: '1s' }} d="M400,200 Q500,140 650,200" />
-            <path className="hero-conn-line" style={{ animationDelay: '2s' }} d="M150,200 Q200,280 300,300" />
-          </g>
-        </svg>
-      </div>
-      <div ref={glowRef} className="cta-glow" />
-      <div className="cta-v2-content">
-        <Reveal>
-          <div className="eyebrow eyebrow-light" style={{ justifyContent: 'center' }}><span /> Get Started</div>
-          <h2>Your Next Opportunity<br />Starts With the Right Preparation.</h2>
-          <p>Tell us where you want to go. We&apos;ll help you understand the right pathway.</p>
-          <div className="cta-v2-actions">
-            <MagneticButton href="/contact" className="button button-blue">
-              Talk to Us <ArrowRight size={18} />
-            </MagneticButton>
-            <MagneticButton href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="button button-outline-light">
-              <MessageCircle size={18} /> WhatsApp Us
-            </MagneticButton>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
+  )
 }

@@ -32,21 +32,28 @@ export function Footer() {
           </div>
           <div className="footer-links">
             <div>
-              <span>Brands</span>
-              <a href="https://www.studentsdubai.com" target="_blank" rel="noopener noreferrer">Students Dubai</a>
-              <Link href="/language-skills">Language Skills Dubai</Link>
-              <Link href="/englishwise">EnglishWise UAE</Link>
-            </div>
-            <div>
               <span>Quick Links</span>
               <Link href="/">Home</Link>
               <Link href="/about">About</Link>
-              <Link href="/services">Services</Link>
               <Link href="/courses">Courses</Link>
+              <Link href="/learning-options">Learning Options</Link>
+              <Link href="/student-journey">Student Journey</Link>
               <Link href="/dubai">Dubai</Link>
+              <Link href="/accommodation">Accommodation</Link>
               <Link href="/blog">Blog</Link>
               <Link href="/faq">FAQ</Link>
               <Link href="/contact">Contact</Link>
+            </div>
+            <div>
+              <span>Training</span>
+              <Link href="/courses/ielts">IELTS</Link>
+              <Link href="/courses/pte">PTE</Link>
+              <Link href="/courses/oet">OET</Link>
+              <Link href="/courses/naati-ccl">NAATI CCL</Link>
+              <Link href="/courses/celpip">CELPIP</Link>
+              <Link href="/courses/languagecert">LanguageCert</Link>
+              <Link href="/courses/spoken-english">Spoken English</Link>
+              <Link href="/courses/english-language-skills">English Language Skills</Link>
             </div>
             <div>
               <span>Contact</span>
@@ -60,10 +67,10 @@ export function Footer() {
       </div>
       <div className="container footer-bottom">
         <div className="footer-brands">
-          <span>Our Brands:</span>
+          <span>Associated Brands:</span>
           <a href="https://www.studentsdubai.com" target="_blank" rel="noopener noreferrer" className="footer-brand-tag">Students Dubai</a>
           <Link href="/language-skills" className="footer-brand-tag">Language Skills Dubai</Link>
-          <Link href="/englishwise" className="footer-brand-tag">EnglishWise UAE</Link>
+          <a href="https://www.englishwise.ae/" target="_blank" rel="noopener noreferrer" className="footer-brand-tag">EnglishWise UAE</a>
         </div>
         <span>© {new Date().getFullYear()} Students Everywhere Training Center. All rights reserved.</span>
       </div>
