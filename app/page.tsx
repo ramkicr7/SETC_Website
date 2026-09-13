@@ -34,9 +34,9 @@ const brands = [
 ]
 
 const services = [
-  ['01', 'Language Training', 'Build stronger language and communication skills for academic, professional and everyday opportunities.'],
-  ['02', 'Test Preparation', 'Structured preparation for IELTS, PTE, OET, NAATI CCL, CELPIP, LanguageCert and other relevant examinations.'],
-  ['03', 'Study Abroad', 'Guidance and support for students exploring international study opportunities.'],
+  ['01', 'Language Training', 'Build stronger language and communication skills for academic, professional and everyday opportunities.', '/language-skills'],
+  ['02', 'Test Preparation', 'Structured preparation for IELTS, PTE, OET, NAATI CCL, CELPIP, LanguageCert and other relevant examinations.', '/services'],
+  ['03', 'Study Abroad', 'Guidance and support for students exploring international study opportunities.', '/student-journey'],
 ]
 
 const reasons = [
@@ -96,7 +96,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="setc-services section-pad" id="services" aria-labelledby="services-title"><div className="container"><Reveal><p className="eyebrow"><span /> What we help you move towards</p><h2 id="services-title">Three pathways.<br /><span>Many possibilities.</span></h2></Reveal><div className="setc-service-list">{services.map(([number, title, text], index) => <Reveal as="article" className="setc-service-row" key={title} delay={index * 80}><span className="setc-service-number">{number}</span><h3>{title}</h3><p>{text}</p><ArrowUpRight className="setc-service-arrow" size={22} /></Reveal>)}</div></div></section>
+      <section className="setc-services section-pad" id="services" aria-labelledby="services-title"><div className="container"><Reveal><p className="eyebrow"><span /> What we help you move towards</p><h2 id="services-title">Three pathways.<br /><span>Many possibilities.</span></h2></Reveal><div className="setc-service-list">{services.map(([number, title, text, href], index) => <Reveal as="article" className="setc-service-row" key={title} delay={index * 80}><span className="setc-service-number">{number}</span><h3>{title}</h3><p>{text}</p><Link className="setc-service-arrow-link" href={href} aria-label={`Explore ${title}`}><ArrowUpRight className="setc-service-arrow" size={22} /></Link></Reveal>)}</div></div></section>
+
+      <section className="setc-accommodation section-pad" id="accommodation" aria-labelledby="accommodation-title">
+        <div className="container setc-accommodation-grid">
+          <Reveal className="setc-accommodation-media"><Image src="/assets/images/accommodation-dubai.png" alt="Bright international-standard student accommodation in Dubai" fill sizes="(max-width: 800px) 100vw, 50vw" /></Reveal>
+          <Reveal className="setc-accommodation-copy" delay={120}><p className="eyebrow"><span /> Stay well in Dubai</p><h2 id="accommodation-title">A comfortable base<br /><span>for your next chapter.</span></h2><p className="lead">Make your time in Dubai feel settled, supported and ready for learning.</p><p>Our accommodation guidance helps international learners find clean, considered rooms with practical access to training, transport and the everyday rhythm of the city.</p><div className="setc-accommodation-points"><span>International-standard rooms</span><span>Practical Dubai locations</span><span>Support before you travel</span></div><Link className="button button-blue" href="/accommodation">Explore accommodation <ArrowRight size={17} /></Link></Reveal>
+        </div>
+      </section>
 
       <section className="setc-why section-pad" aria-labelledby="why-title"><div className="container"><Reveal className="setc-section-intro"><p className="eyebrow"><span /> Why SETC</p><h2 id="why-title">Built around your next step.</h2></Reveal><div className="setc-reason-grid">{reasons.map(([number, title, text], index) => <Reveal key={title} className="setc-reason" delay={index * 80}><span>{number}</span><h3>{title}</h3><p>{text}</p></Reveal>)}</div></div></section>
 

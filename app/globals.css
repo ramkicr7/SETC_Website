@@ -49,7 +49,7 @@ img { max-width: 100%; display: block; }
 
 .site-header { height: 76px; background: white; position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(3,24,61,.08); transition: box-shadow .3s, background .3s, backdrop-filter .3s; }
 .site-header.is-scrolled { box-shadow: 0 4px 24px rgba(3,24,61,.08); backdrop-filter: blur(12px); background: rgba(255,255,255,.95); }
-.site-header.is-transparent { background: transparent; border-bottom-color: transparent; }
+.site-header.is-transparent { background: rgba(3,24,61,.9); border-bottom-color: rgba(255,255,255,.1); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
 .site-header.is-transparent .brand { color: white; }
 .site-header.is-transparent .brand small { color: #9fb7d5; }
 .site-header.is-transparent .desktop-nav a { color: rgba(255,255,255,.85); }
@@ -829,6 +829,30 @@ img { max-width: 100%; display: block; }
 .world-map .map-dot { background: #4de0b1; box-shadow: 0 0 18px rgba(77,224,177,.85); }
 .world-map .map-center { color: #d7fff2; text-shadow: 0 0 20px rgba(77,224,177,.3); }
 .world-map .map-center svg { color: #4de0b1; }
+.setc-service-row { position: relative; }
+.setc-service-arrow-link { display: grid; place-items: center; width: 48px; height: 48px; margin-left: auto; color: var(--navy); border: 1px solid transparent; border-radius: 50%; transition: color .25s, background .25s, border-color .25s, transform .25s; }
+.setc-service-arrow-link:hover { color: var(--blue); background: rgba(6,142,226,.08); border-color: rgba(6,142,226,.22); transform: translate(3px, -3px); }
+.setc-service-arrow-link:focus-visible { outline: 3px solid rgba(6,142,226,.28); outline-offset: 3px; }
+.setc-accommodation { background: #f6f8fb; }
+.setc-accommodation-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); align-items: center; gap: clamp(48px, 8vw, 112px); }
+.setc-accommodation-media { position: relative; min-height: 480px; overflow: hidden; border-radius: 4px; box-shadow: 0 24px 60px rgba(3,24,61,.15); }
+.setc-accommodation-media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(3,24,61,.28)); pointer-events: none; }
+.setc-accommodation-media img { object-fit: cover; transition: transform .7s ease; }
+.setc-accommodation-media:hover img { transform: scale(1.035); }
+.setc-accommodation-copy h2 { color: var(--navy); font-size: clamp(38px, 5vw, 62px); line-height: 1; letter-spacing: -.06em; margin: 20px 0; }
+.setc-accommodation-copy h2 span { color: var(--blue); }
+.setc-accommodation-copy p { max-width: 510px; color: var(--muted); line-height: 1.75; }
+.setc-accommodation-copy .lead { color: var(--ink); font-size: 19px; line-height: 1.55; }
+.setc-accommodation-points { display: grid; gap: 10px; margin: 26px 0 30px; }
+.setc-accommodation-points span { display: flex; align-items: center; gap: 12px; color: var(--ink); font-size: 13px; font-weight: 700; }
+.setc-accommodation-points span::before { content: ''; width: 8px; height: 8px; flex: 0 0 auto; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 5px rgba(6,142,226,.1); }
+.setc-brand-logo { display: grid; place-items: center; min-height: 178px; padding: 24px; background: #fff; border-bottom: 1px solid #edf1f6; overflow: hidden; }
+.setc-brand-logo img { width: min(100%, 220px); height: 128px; object-fit: contain; }
+.setc-brand-card > a { display: flex; height: 100%; flex-direction: column; }
+.setc-brand-card h3, .setc-brand-card p, .setc-brand-card .setc-brand-link { margin-left: 26px; margin-right: 26px; }
+.setc-brand-card h3 { margin-top: 18px; }
+.setc-brand-card .setc-brand-link { margin-top: auto; padding-bottom: 24px; }
+@media (max-width: 800px) { .setc-accommodation-grid { grid-template-columns: 1fr; gap: 38px; }.setc-accommodation-media { min-height: 360px; }.setc-service-arrow-link { width: 42px; height: 42px; } }
 @media (max-width: 700px) { .blog-intro { display: block; margin-bottom: 34px; }.blog-intro > p { margin-top: 18px; }.accommodation-standard { font-size: 10px; }.world-map .map-visual::before { inset: 16% 8%; } }
 
 /* Final visual alignment pass: keep the existing content, restore hierarchy and give every page the same rhythm. */
