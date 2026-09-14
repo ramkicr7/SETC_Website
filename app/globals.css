@@ -718,6 +718,14 @@ img { max-width: 100%; display: block; }
 @media (max-width: 600px) { .setc-hero h1 { font-size: clamp(44px, 14vw, 68px); }.setc-hero-lede { font-size: 15px; }.setc-network svg { width: 115%; margin-left: -7%; }.setc-network-label { right: 0; }.setc-about h2, .setc-services h2, .setc-section-intro h2 { font-size: 42px; }.setc-ecosystem-line { margin-top: 45px; }.setc-reason-grid { grid-template-columns: 1fr; }.setc-service-row { gap: 14px; }.setc-service-row h3 { font-size: 25px; }.setc-cta { min-height: 560px; }.setc-cta h2 { font-size: 48px; } }
   @media (prefers-reduced-motion: reduce) { .setc-hero-orbit, .setc-network svg, .setc-hero-dots i { animation: none; } .setc-brand-card:hover, .setc-service-row:hover { transform: none; } }
 
+/* Keep partner artwork inside a calm, consistent frame even when source files have different aspect ratios. */
+.setc-brand-card > a { min-width: 0; }
+.setc-brand-logo { height: 132px; padding: 12px 18px; background: #fff; overflow: hidden; }
+.setc-brand-logo img { display: block; width: auto; max-width: 100%; height: auto; max-height: 108px; object-fit: contain; }
+.setc-brand-card:nth-child(1) .setc-brand-logo img { transform: scale(1.35); }
+.setc-brand-card:nth-child(2) .setc-brand-logo img { transform: scale(1.12); clip-path: circle(49% at 50% 50%); }
+.setc-brand-card:nth-child(3) .setc-brand-logo img { transform: scale(1.35); }
+
   /* Brand directory and careers */
   .brand-detail-card { background: white; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; transition: transform .25s, box-shadow .25s, border-color .25s; }
   .brand-detail-card:hover { transform: translateY(-5px); box-shadow: 0 18px 42px rgba(3,24,61,.1); border-color: #9fd6f0; }
