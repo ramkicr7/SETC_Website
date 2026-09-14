@@ -88,7 +88,7 @@ export const navItems: NavItem[] = [
   { label: 'About', href: '/about' },
   {
     label: 'Brands',
-    href: '/englishwise',
+    href: '/brands',
     children: [
       { label: 'Students Dubai', href: 'https://www.studentsdubai.com' },
       { label: 'Language Skills Dubai', href: '/language-skills' },
@@ -107,6 +107,7 @@ export const navItems: NavItem[] = [
   { label: 'Courses', href: '/courses' },
   { label: 'Dubai', href: '/dubai' },
   { label: 'Blog', href: '/blog' },
+  { label: 'Careers', href: '/careers' },
   { label: 'FAQ', href: '/faq' },
   { label: 'Contact', href: '/contact' },
 ];
@@ -211,7 +212,7 @@ export const brands: Brand[] = [
     tagline: 'Languages · Test Preparation · Study Abroad',
     description: 'Supporting learners through language development, examination preparation and international study opportunities.',
     focus: ['Languages', 'Test Preparation', 'Study Abroad'],
-    logo: '/assets/images/logos/SETC_(1).png',
+    logo: 'https://www.idp.com/content/dam/idp/logos/idp-logo.svg',
     url: 'https://www.studentsdubai.com',
   },
   {
@@ -219,7 +220,7 @@ export const brands: Brand[] = [
     tagline: 'Language Training',
     description: 'Focused language training designed to help learners develop practical communication skills.',
     focus: ['Language Training'],
-    logo: '/assets/images/brands/Languageskills.png',
+    logo: 'https://www.languageskills.com.au/wp-content/uploads/2023/04/Language-Skills-logo.png',
     internalHref: '/language-skills',
   },
   {
@@ -227,7 +228,7 @@ export const brands: Brand[] = [
     tagline: 'Test Preparation',
     description: 'Focused preparation for English language and relevant professional examinations.',
     focus: ['Test Preparation'],
-    logo: '/assets/images/brands/Englishwise_UAE.png',
+    logo: 'https://www.pearson.com/content/dam/one-dot-com/one-dot-com/global/brand/logos/pearson-logo.svg',
     url: 'https://www.englishwise.ae/',
   },
 ];

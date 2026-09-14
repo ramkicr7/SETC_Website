@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowUpRight, ArrowRight, Globe2, MessageCircle } from 'lucide-react'
 import { Reveal } from '@/components/Reveal'
@@ -92,7 +91,7 @@ export default function Home() {
       <section className="setc-brands section-pad" id="brands" aria-labelledby="brands-title">
         <div className="container"><Reveal className="setc-section-intro"><p className="eyebrow"><span /> Our brands</p><h2 id="brands-title">One connected vision.</h2><p>Specialised brands. Focused expertise. Connected opportunities.</p></Reveal>
           <Reveal className="setc-ecosystem-line" aria-hidden="true"><span>SETC</span><i /><i /><i /></Reveal>
-          <div className="setc-brand-grid">{brands.map((brand, index) => { const content = <><div className="setc-brand-logo"><Image src={brand.logo} alt={`${brand.name} logo`} width={220} height={110} /></div><span className="setc-brand-index">0{index + 1}</span><h3>{brand.name}</h3><p className="setc-brand-focus">{brand.focus}</p><p>{brand.description}</p><span className="setc-brand-link">Explore brand <ArrowUpRight size={16} /></span></>; return <Reveal as="article" key={brand.name} className="setc-brand-card" delay={index * 100}>{brand.external ? <a href={brand.href} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${brand.name}`}>{content}</a> : <Link href={brand.href}>{content}</Link>}</Reveal> })}</div>
+          <div className="setc-brand-grid">{brands.map((brand, index) => { const content = <><div className="setc-brand-logo"><img src={brand.logo} alt={`${brand.name} logo`} width={220} height={110} loading="lazy" /></div><span className="setc-brand-index">0{index + 1}</span><h3>{brand.name}</h3><p className="setc-brand-focus">{brand.focus}</p><p>{brand.description}</p><span className="setc-brand-link">Explore brand <ArrowUpRight size={16} /></span></>; return <Reveal as="article" key={brand.name} className="setc-brand-card" delay={index * 100}>{brand.external ? <a href={brand.href} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${brand.name}`}>{content}</a> : <Link href={brand.href}>{content}</Link>}</Reveal> })}</div>
         </div>
       </section>
 
