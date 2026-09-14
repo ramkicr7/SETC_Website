@@ -847,3 +847,6 @@ img { max-width: 100%; display: block; }
 .world-map .map-center { color: #d7fff2; text-shadow: 0 0 20px rgba(77,224,177,.3); }
 .world-map .map-center svg { color: #4de0b1; }
 @media (max-width: 700px) { .blog-intro { display: block; margin-bottom: 34px; }.blog-intro > p { margin-top: 18px; }.accommodation-standard { font-size: 10px; }.world-map .map-visual::before { inset: 16% 8%; } }
+.setc-hero-controls { display: flex; align-items: center; gap: 12px; margin-top: 28px; color: rgba(255,255,255,.66); font-size: 11px; letter-spacing: .16em; }
+.setc-hero-controls button { display: grid; place-items: center; width: 32px; height: 32px; border: 1px solid rgba(255,255,255,.35); border-radius: 50%; color: white; background: transparent; cursor: pointer; transition: background .2s ease, border-color .2s ease; }
+.setc-hero-controls button:hover, .setc-hero-controls button:focus-visible { background: rgba(255,255,255,.14); border-color: #fff; outline: none; }

@@ -1,7 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowUpRight, ArrowRight, Globe2, MessageCircle } from 'lucide-react'
+import { useState } from 'react'
+import { ArrowUpRight, ArrowRight, Globe2, MessageCircle, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Reveal } from '@/components/Reveal'
 import { WHATSAPP_LINK } from '@/lib/data'
 
@@ -45,7 +46,18 @@ const reasons = [
   ['04', 'Focused on real opportunities', 'Practical preparation that keeps your ambitions moving.'],
 ]
 
+const heroSlides = [
+  { kicker: 'Language training', title: <>Build the skills<br /><em>that open doors.</em></>, lede: 'Practical language training for study, work, travel and everyday confidence.', label: 'LANGUAGES', href: '/courses' },
+  { kicker: 'Test preparation', title: <>Prepare with<br /><em>purpose.</em></>, lede: 'Focused preparation and expert guidance for the exam that supports your next move.', label: 'TEST PREPARATION', href: '/courses' },
+  { kicker: 'Study abroad', title: <>Go further.<br /><em>Go everywhere.</em></>, lede: 'Explore international study opportunities with a connected team behind you.', label: 'STUDY ABROAD', href: '/services' },
+]
+
 export default function Home() {
+  const [activeSlide, setActiveSlide] = useState(0)
+  const slide = heroSlides[activeSlide]
+  const nextSlide = () => setActiveSlide((current) => (current + 1) % heroSlides.length)
+  const previousSlide = () => setActiveSlide((current) => (current - 1 + heroSlides.length) % heroSlides.length)
+
   return (
     <main className="setc-home">
       <section className="setc-hero" aria-labelledby="hero-title">
@@ -56,13 +68,18 @@ export default function Home() {
         <div className="setc-hero-dots" aria-hidden="true"><i /><i /><i /><i /><i /><i /></div>
         <div className="container setc-hero-content">
           <Reveal className="setc-hero-copy">
-            <p className="setc-kicker"><Globe2 size={15} /> Students Everywhere Training Center</p>
-            <h1 id="hero-title"><span>Learning</span><span>without <em>borders.</em></span></h1>
-            <p className="setc-hero-lede">Bringing together specialised education brands in language training, test preparation and international study opportunities.</p>
-            <div className="setc-hero-path"><span>Building futures through</span><strong>LANGUAGES</strong><span className="setc-path-arrow">↓</span></div>
+            <p className="setc-kicker"><Globe2 size={15} /> {slide.kicker}</p>
+            <h1 id="hero-title"><span>Learning</span><span>{slide.title}</span></h1>
+            <p className="setc-hero-lede">{slide.lede}</p>
+            <div className="setc-hero-path"><span>Building futures through</span><strong>{slide.label}</strong><span className="setc-path-arrow">↓</span></div>
             <div className="setc-actions">
-              <a className="button button-blue" href="#brands">Explore SETC <ArrowRight size={17} /></a>
+              <Link className="button button-blue" href={slide.href}>Explore pathway <ArrowRight size={17} /></Link>
               <Link className="setc-text-link" href="/contact">Enquire now <ArrowUpRight size={16} /></Link>
+            </div>
+            <div className="setc-hero-controls" aria-label="Hero slides">
+              <button type="button" onClick={previousSlide} aria-label="Previous hero slide"><ChevronLeft size={16} /></button>
+              <span>{String(activeSlide + 1).padStart(2, '0')} / {String(heroSlides.length).padStart(2, '0')}</span>
+              <button type="button" onClick={nextSlide} aria-label="Next hero slide"><ChevronRight size={16} /></button>
             </div>
           </Reveal>
           <Reveal className="setc-network" delay={180} aria-label="Global education network visual">
