@@ -1,19 +1,20 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowUpRight, ArrowRight, Globe2, MessageCircle } from 'lucide-react'
+import Image from 'next/image'
+import { useState } from 'react'
+import { ArrowUpRight, ArrowRight, Globe2, MessageCircle, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Reveal } from '@/components/Reveal'
-import { WHATSAPP_LINK } from '@/lib/data'
+import { classroomImage, courses, dubaiImage, WHATSAPP_LINK } from '@/lib/data'
 
 const brands = [
   {
     name: 'Students Dubai',
     focus: 'Languages · Test Preparation · Study Abroad',
     description: 'Supporting learners through language development, examination preparation and international study opportunities.',
-    href: 'https://www.studentsdubai.com',
+    href: '/brands/students-dubai',
     logo: '/assets/images/logos/SETC_(1).png',
-    external: true,
+    external: false,
   },
   {
     name: 'Language Skills Dubai',
@@ -27,16 +28,16 @@ const brands = [
     name: 'EnglishWise UAE',
     focus: 'Test Preparation',
     description: 'Focused preparation for English language and relevant professional examinations.',
-    href: 'https://www.englishwise.ae/',
+    href: '/englishwise',
     logo: '/assets/images/brands/Englishwise_UAE.png',
-    external: true,
+    external: false,
   },
 ]
 
 const services = [
-  ['01', 'Language Training', 'Build stronger language and communication skills for academic, professional and everyday opportunities.', '/language-skills'],
-  ['02', 'Test Preparation', 'Structured preparation for IELTS, PTE, OET, NAATI CCL, CELPIP, LanguageCert and other relevant examinations.', '/services'],
-  ['03', 'Study Abroad', 'Guidance and support for students exploring international study opportunities.', '/student-journey'],
+  ['01', 'Language Training', 'Build stronger language and communication skills for academic, professional and everyday opportunities.', courses.find((course) => course.slug === 'spoken-english')?.image ?? classroomImage, '/courses/spoken-english'],
+  ['02', 'Test Preparation', 'Structured preparation for IELTS, PTE, OET, NAATI CCL, CELPIP, LanguageCert and other relevant examinations.', courses.find((course) => course.slug === 'ielts')?.image ?? classroomImage, '/courses'],
+  ['03', 'Study Abroad', 'Guidance and support for students exploring international study opportunities.', dubaiImage, '/global-learning'],
 ]
 
 const reasons = [
@@ -46,7 +47,18 @@ const reasons = [
   ['04', 'Focused on real opportunities', 'Practical preparation that keeps your ambitions moving.'],
 ]
 
+const heroSlides = [
+  { kicker: 'Language training', title: <>Build the skills<br /><em>that open doors.</em></>, lede: 'Practical language training for study, work, travel and everyday confidence.', label: 'LANGUAGES', href: '/courses' },
+  { kicker: 'Test preparation', title: <>Prepare with<br /><em>purpose.</em></>, lede: 'Focused preparation and expert guidance for the exam that supports your next move.', label: 'TEST PREPARATION', href: '/courses' },
+  { kicker: 'Study abroad', title: <>Go further.<br /><em>Go everywhere.</em></>, lede: 'Explore international study opportunities with a connected team behind you.', label: 'STUDY ABROAD', href: '/services' },
+]
+
 export default function Home() {
+  const [activeSlide, setActiveSlide] = useState(0)
+  const slide = heroSlides[activeSlide]
+  const nextSlide = () => setActiveSlide((current) => (current + 1) % heroSlides.length)
+  const previousSlide = () => setActiveSlide((current) => (current - 1 + heroSlides.length) % heroSlides.length)
+
   return (
     <main className="setc-home">
       <section className="setc-hero" aria-labelledby="hero-title">
@@ -57,13 +69,18 @@ export default function Home() {
         <div className="setc-hero-dots" aria-hidden="true"><i /><i /><i /><i /><i /><i /></div>
         <div className="container setc-hero-content">
           <Reveal className="setc-hero-copy">
-            <p className="setc-kicker"><Globe2 size={15} /> Students Everywhere Training Center</p>
-            <h1 id="hero-title"><span>Learning</span><span>without <em>borders.</em></span></h1>
-            <p className="setc-hero-lede">Bringing together specialised education brands in language training, test preparation and international study opportunities.</p>
-            <div className="setc-hero-path"><span>Building futures through</span><strong>LANGUAGES</strong><span className="setc-path-arrow">↓</span></div>
+            <p className="setc-kicker"><Globe2 size={15} /> {slide.kicker}</p>
+            <h1 id="hero-title"><span>Learning</span><span>{slide.title}</span></h1>
+            <p className="setc-hero-lede">{slide.lede}</p>
+            <div className="setc-hero-path"><span>Building futures through</span><strong>{slide.label}</strong><span className="setc-path-arrow">↓</span></div>
             <div className="setc-actions">
-              <a className="button button-blue" href="#brands">Explore SETC <ArrowRight size={17} /></a>
+              <Link className="button button-blue" href={slide.href}>Explore pathway <ArrowRight size={17} /></Link>
               <Link className="setc-text-link" href="/contact">Enquire now <ArrowUpRight size={16} /></Link>
+            </div>
+            <div className="setc-hero-controls" aria-label="Hero slides">
+              <button type="button" onClick={previousSlide} aria-label="Previous hero slide"><ChevronLeft size={16} /></button>
+              <span>{String(activeSlide + 1).padStart(2, '0')} / {String(heroSlides.length).padStart(2, '0')}</span>
+              <button type="button" onClick={nextSlide} aria-label="Next hero slide"><ChevronRight size={16} /></button>
             </div>
           </Reveal>
           <Reveal className="setc-network" delay={180} aria-label="Global education network visual">
@@ -91,19 +108,11 @@ export default function Home() {
 
       <section className="setc-brands section-pad" id="brands" aria-labelledby="brands-title">
         <div className="container"><Reveal className="setc-section-intro"><p className="eyebrow"><span /> Our brands</p><h2 id="brands-title">One connected vision.</h2><p>Specialised brands. Focused expertise. Connected opportunities.</p></Reveal>
-          <Reveal className="setc-ecosystem-line" aria-hidden="true"><span>SETC</span><i /><i /><i /></Reveal>
-          <div className="setc-brand-grid">{brands.map((brand, index) => { const content = <><div className="setc-brand-logo"><Image src={brand.logo} alt={`${brand.name} logo`} width={220} height={110} /></div><span className="setc-brand-index">0{index + 1}</span><h3>{brand.name}</h3><p className="setc-brand-focus">{brand.focus}</p><p>{brand.description}</p><span className="setc-brand-link">Explore brand <ArrowUpRight size={16} /></span></>; return <Reveal as="article" key={brand.name} className="setc-brand-card" delay={index * 100}>{brand.external ? <a href={brand.href} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${brand.name}`}>{content}</a> : <Link href={brand.href}>{content}</Link>}</Reveal> })}</div>
+          <div className="setc-brand-grid">{brands.map((brand, index) => { const content = <><div className="setc-brand-logo"><Image src={brand.logo} alt={`${brand.name} logo`} width={220} height={110} loading="lazy" /></div><span className="setc-brand-index">0{index + 1}</span><h3>{brand.name}</h3><p className="setc-brand-focus">{brand.focus}</p><p>{brand.description}</p><span className="setc-brand-link">Explore brand <ArrowUpRight size={16} /></span></>; return <Reveal as="article" key={brand.name} className="setc-brand-card" delay={index * 100}>{brand.external ? <a href={brand.href} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${brand.name}`}>{content}</a> : <Link href={brand.href}>{content}</Link>}</Reveal> })}</div>
         </div>
       </section>
 
-      <section className="setc-services section-pad" id="services" aria-labelledby="services-title"><div className="container"><Reveal><p className="eyebrow"><span /> What we help you move towards</p><h2 id="services-title">Three pathways.<br /><span>Many possibilities.</span></h2></Reveal><div className="setc-service-list">{services.map(([number, title, text, href], index) => <Reveal as="article" className="setc-service-row" key={title} delay={index * 80}><span className="setc-service-number">{number}</span><h3>{title}</h3><p>{text}</p><Link className="setc-service-arrow-link" href={href} aria-label={`Explore ${title}`}><ArrowUpRight className="setc-service-arrow" size={22} /></Link></Reveal>)}</div></div></section>
-
-      <section className="setc-accommodation section-pad" id="accommodation" aria-labelledby="accommodation-title">
-        <div className="container setc-accommodation-grid">
-          <Reveal className="setc-accommodation-media"><Image src="/assets/images/accommodation-dubai.png" alt="Bright international-standard student accommodation in Dubai" fill sizes="(max-width: 800px) 100vw, 50vw" /></Reveal>
-          <Reveal className="setc-accommodation-copy" delay={120}><p className="eyebrow"><span /> Stay well in Dubai</p><h2 id="accommodation-title">A comfortable base<br /><span>for your next chapter.</span></h2><p className="lead">Make your time in Dubai feel settled, supported and ready for learning.</p><p>Our accommodation guidance helps international learners find clean, considered rooms with practical access to training, transport and the everyday rhythm of the city.</p><div className="setc-accommodation-points"><span>International-standard rooms</span><span>Practical Dubai locations</span><span>Support before you travel</span></div><Link className="button button-blue" href="/accommodation">Explore accommodation <ArrowRight size={17} /></Link></Reveal>
-        </div>
-      </section>
+      <section className="setc-services section-pad" id="services" aria-labelledby="services-title"><div className="container"><Reveal><p className="eyebrow"><span /> What we help you move towards</p><h2 id="services-title">Three pathways.<br /><span>Many possibilities.</span></h2></Reveal><div className="setc-service-list">{services.map(([number, title, text, image, href], index) => <Reveal as="article" className="setc-service-row" key={title} delay={index * 80}><Link href={href} className="setc-service-card-link" aria-label={`${title} pathway`}><div className="setc-service-image"><Image src={image} alt="" fill sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw" /></div><div className="setc-service-card-content"><span className="setc-service-number">{number}</span><h3>{title}</h3><p>{text}</p><span className="setc-service-cta" aria-hidden="true"><ArrowUpRight className="setc-service-arrow" size={22} /></span></div></Link></Reveal>)}</div></div></section>
 
       <section className="setc-why section-pad" aria-labelledby="why-title"><div className="container"><Reveal className="setc-section-intro"><p className="eyebrow"><span /> Why SETC</p><h2 id="why-title">Built around your next step.</h2></Reveal><div className="setc-reason-grid">{reasons.map(([number, title, text], index) => <Reveal key={title} className="setc-reason" delay={index * 80}><span>{number}</span><h3>{title}</h3><p>{text}</p></Reveal>)}</div></div></section>
 

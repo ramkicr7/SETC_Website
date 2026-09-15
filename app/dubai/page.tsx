@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { ArrowRight, MapPin, Phone, MessageCircle } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
 import { Gallery } from '@/components/Gallery';
+import { GlobalContactSection } from '@/components/layout/GlobalContactSection';
 import { dubaiHighlights, dubaiActivities, dubaiGallery, ADDRESS_LINES, dubaiImage, WHATSAPP_LINK, PHONE_LINK, PHONE_NUMBER } from '@/lib/data';
 
 export const metadata: Metadata = {
@@ -38,37 +39,45 @@ export default function DubaiPage() {
       </section>
 
       <section className="content-section" style={{ background: 'var(--paper)' }}>
-        <div className="container">
-          <Reveal className="center-heading">
-            <div className="eyebrow"><span /> Why Dubai</div>
-            <h2>Why Learn in Dubai?</h2>
-            <p>A global city that supports international learning and cross-cultural communication.</p>
+        <div className="container dubai-editorial-grid">
+          <Reveal className="dubai-editorial-image">
+            <Image src={dubaiGallery[1].url} alt={dubaiGallery[1].alt} fill sizes="(max-width: 900px) 100vw, 48vw" />
+            <span>Dubai, UAE</span>
           </Reveal>
-          <div className="benefit-grid">
-            {dubaiHighlights.map((item, i) => (
-              <Reveal as="article" key={item.title} className="benefit-card" delay={i * 80}>
-                <div className="benefit-icon"><item.icon size={24} /></div>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </Reveal>
-            ))}
+          <div className="dubai-editorial-copy">
+            <Reveal className="section-heading">
+              <div><div className="eyebrow"><span /> Why Dubai</div><h2>Why Learn in Dubai?</h2></div>
+              <p>A global city that supports international learning and cross-cultural communication.</p>
+            </Reveal>
+            <div className="dubai-benefit-list">
+              {dubaiHighlights.map((item, i) => (
+                <Reveal as="article" key={item.title} className="dubai-benefit-item" delay={i * 80}>
+                  <div className="benefit-icon"><item.icon size={22} /></div>
+                  <div><h3>{item.title}</h3><p>{item.text}</p></div>
+                  <span className="dubai-benefit-thumb"><Image src={dubaiGallery[(i + 2) % dubaiGallery.length].url} alt="" fill sizes="100px" /></span>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       <section className="content-section">
-        <div className="container">
-          <Reveal className="center-heading">
+        <div className="container dubai-city-grid">
+          <Reveal className="dubai-city-intro">
             <div className="eyebrow"><span /> Places to Explore</div>
             <h2>Experience the City</h2>
             <p>Dubai offers a rich environment for learning and personal growth.</p>
+            <div className="dubai-city-collage">
+              <Image src={dubaiGallery[3].url} alt={dubaiGallery[3].alt} fill sizes="(max-width: 900px) 50vw, 300px" />
+            </div>
           </Reveal>
-          <div className="modes-grid">
+          <div className="dubai-activity-list">
             {dubaiActivities.map((item, i) => (
-              <Reveal as="article" key={item.title} className="benefit-card" delay={i * 100}>
-                <div className="benefit-icon"><item.icon size={24} /></div>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
+              <Reveal as="article" key={item.title} className="dubai-activity-card" delay={i * 100}>
+                <Image src={dubaiGallery[(i + 3) % dubaiGallery.length].url} alt="" fill sizes="(max-width: 700px) 100vw, 48vw" className="dubai-activity-image" />
+                <div className="dubai-activity-overlay" />
+                <div className="dubai-activity-content"><div className="benefit-icon"><item.icon size={22} /></div><h3>{item.title}</h3><p>{item.text}</p></div>
               </Reveal>
             ))}
           </div>
@@ -88,11 +97,11 @@ export default function DubaiPage() {
         </div>
       </section>
 
-      <section className="content-section">
+      <GlobalContactSection className="dubai-location-section global-location-section" labelledBy="dubai-location-title">
         <div className="container">
           <Reveal className="center-heading">
             <div className="eyebrow"><span /> Our Location</div>
-            <h2>Visit Our Training Center</h2>
+            <h2 id="dubai-location-title">Visit Our Training Center</h2>
             <p>{ADDRESS_LINES.join(', ')}</p>
           </Reveal>
           <Reveal className="map-placeholder">
@@ -105,7 +114,7 @@ export default function DubaiPage() {
             </div>
           </Reveal>
         </div>
-      </section>
+      </GlobalContactSection>
     </main>
   );
 }

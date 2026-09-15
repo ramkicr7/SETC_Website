@@ -74,7 +74,7 @@ export const faqs = [
   { q: 'Do you offer Spoken English classes?', a: 'Yes, we offer Spoken English and English language skills training for learners who want to improve their communication and practical English skills.' },
   { q: 'How can I enquire about a course?', a: 'You can contact our team by phone, WhatsApp or through the website enquiry form. Our team can provide information about the relevant course and available training options.' },
   { q: 'How do I enrol?', a: 'Contact us with the course or training you are interested in. Our team will guide you through the available options and the enrolment process.' },
-  { q: 'How can I contact Students Everywhere Training Center?', a: 'You can call or WhatsApp us on +971 58 589 6200, or contact us through the website enquiry form.' },
+  { q: 'How can I contact Students Everywhere Training Center?', a: 'You can call or WhatsApp us on +971 4 553 8344, or contact us through the website enquiry form.' },
   { q: 'Do you guarantee exam scores or results?', a: 'Training and preparation are designed to help learners develop relevant knowledge and skills. Individual results depend on several factors, and SETC does not make guaranteed score or outcome claims unless explicitly stated and contractually supported.' },
   { q: 'Do you offer accommodation for students?', a: 'Accommodation options may be available. Please contact our team directly to discuss current availability and details. Verified information will be provided through our team and published when confirmed.' },
   { q: 'Do you offer immigration or visa services?', a: 'No. Students Everywhere Training Center is a training center focused on English language and examination preparation. We do not provide immigration, visa or study-abroad consultancy services.' },
@@ -88,7 +88,7 @@ export const navItems: NavItem[] = [
   { label: 'About', href: '/about' },
   {
     label: 'Brands',
-    href: '/englishwise',
+    href: '/brands',
     children: [
       { label: 'Students Dubai', href: 'https://www.studentsdubai.com' },
       { label: 'Language Skills Dubai', href: '/language-skills' },
@@ -107,6 +107,7 @@ export const navItems: NavItem[] = [
   { label: 'Courses', href: '/courses' },
   { label: 'Dubai', href: '/dubai' },
   { label: 'Blog', href: '/blog' },
+  { label: 'Careers', href: '/careers' },
   { label: 'FAQ', href: '/faq' },
   { label: 'Contact', href: '/contact' },
 ];
@@ -177,8 +178,8 @@ export const blogPosts: BlogPost[] = [
 
 export const WHATSAPP_NUMBER = '971585896200';
 export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`;
-export const PHONE_NUMBER = '+971 58 589 6200';
-export const PHONE_LINK = 'tel:+971585896200';
+export const PHONE_NUMBER = '+971 4 553 8344';
+export const PHONE_LINK = 'tel:+97145538344';
 export const ADDRESS_LINES = ['Office 215, Pinnacle Building', 'Sheikh Zayed Road, Al Barsha', 'Dubai, United Arab Emirates'];
 
 export const heroImage = 'https://images.pexels.com/photos/5538583/pexels-photo-5538583.jpeg?auto=compress&cs=tinysrgb&h=650&w=940';
@@ -213,6 +214,7 @@ export const brands: Brand[] = [
     focus: ['Languages', 'Test Preparation', 'Study Abroad'],
     logo: '/assets/images/logos/SETC_(1).png',
     url: 'https://www.studentsdubai.com',
+    internalHref: '/brands/students-dubai',
   },
   {
     name: 'Language Skills Dubai',
@@ -229,6 +231,7 @@ export const brands: Brand[] = [
     focus: ['Test Preparation'],
     logo: '/assets/images/brands/Englishwise_UAE.png',
     url: 'https://www.englishwise.ae/',
+    internalHref: '/englishwise',
   },
 ];
 

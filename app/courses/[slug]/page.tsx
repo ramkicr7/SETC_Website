@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { ArrowRight, Check, MessageCircle, Phone } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
@@ -27,8 +28,9 @@ export default function CourseDetailPage({ params }: Props) {
 
   return (
     <main>
-      <section className="page-hero">
-        <div className="container">
+      <section className="course-detail-hero">
+        <div className="container course-detail-hero-grid">
+          <div className="course-detail-hero-copy">
           <div className="breadcrumb">
             <Link href="/">Home</Link> / <Link href="/courses">Courses</Link> / <span>{course.title}</span>
           </div>
@@ -39,11 +41,13 @@ export default function CourseDetailPage({ params }: Props) {
             <Link className="button button-red" href="#enquire">Enquire Now <ArrowRight size={17} /></Link>
             <a className="button button-outline-light" href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer"><MessageCircle size={17} /> Chat on WhatsApp</a>
           </div>
+          </div>
+          <div className="course-detail-hero-visual"><Image src={course.image} alt="" fill priority sizes="(max-width: 900px) 100vw, 48vw" /></div>
         </div>
       </section>
 
       <section className="content-section">
-        <div className="container" style={{ maxWidth: 780 }}>
+        <div className="container course-detail-content">
           <Reveal>
             <h2 style={{ color: 'var(--navy)', fontSize: 28, fontWeight: 800, letterSpacing: '-.03em', margin: '0 0 20px' }}>About This Course</h2>
             <p style={{ color: 'var(--muted)', fontSize: 16, lineHeight: 1.8, marginBottom: 20 }}>{course.title} at SETC is designed to help learners prepare in a structured and practical way. Our training focuses on developing the relevant skills and confidence needed for your examination or learning goal.</p>
@@ -63,7 +67,7 @@ export default function CourseDetailPage({ params }: Props) {
         <div className="container contact-grid">
           <Reveal className="contact-info" style={{ color: 'var(--ink)' }}>
             <div className="eyebrow"><span /> Enquire about {course.title}</div>
-            <h2 style={{ color: 'var(--navy)' }}>Ready to Get Started?</h2>
+            <h2 id="course-enquiry-title" style={{ color: 'var(--navy)' }}>Ready to Get Started?</h2>
             <p style={{ color: 'var(--muted)', margin: '20px 0 30px' }}>Tell us about your goal. Our team will help you understand the available training options.</p>
             <div className="contact-details">
               <a href={PHONE_LINK} style={{ color: 'var(--ink)' }}><div className="contact-icon" style={{ background: 'var(--blue-light)', color: 'var(--blue)' }}><Phone size={18} /></div><span><small>Call us</small>{PHONE_NUMBER}</span></a>

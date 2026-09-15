@@ -54,10 +54,11 @@ export function Header() {
                 className="nav-item-wrapper"
                 onMouseEnter={() => item.children && setOpenDropdown(item.href)}
                 onMouseLeave={() => setOpenDropdown(null)}
+                onFocus={() => item.children && setOpenDropdown(item.href)}
               >
                 <Link
                   href={item.href}
-                  className={`${pathname === item.href || (item.children?.some(c => c.href === pathname)) ? 'nav-active' : ''} ${item.children ? 'has-dropdown' : ''}`}
+                  className={`${pathname === item.href || pathname.startsWith(`${item.href}/`) || (item.children?.some(c => c.href === pathname)) ? 'nav-active' : ''} ${item.children ? 'has-dropdown' : ''}`}
                 >
                   {item.label}
                   {item.children && <ChevronDown size={14} className="dropdown-chevron" />}

@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = 'https://www.studentsdubai.com';
-  const routes = ['', '/about', '/courses', '/services', '/englishwise', '/language-skills', '/faq', '/contact'];
+  const routes = ['', '/about', '/brands', '/careers', '/courses', '/services', '/englishwise', '/language-skills', '/accommodation', '/blog', '/faq', '/contact'];
   const courses = ['ielts', 'pte', 'oet', 'naati-ccl', 'celpip', 'languagecert', 'spoken-english', 'english-language-skills'];
 
   return [

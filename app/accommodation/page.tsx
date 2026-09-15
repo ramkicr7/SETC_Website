@@ -80,7 +80,7 @@ export default function AccommodationPage() {
         <div className="container contact-grid">
           <Reveal className="contact-info" style={{ color: 'var(--ink)' }}>
             <div className="eyebrow"><span /> Enquire about accommodation</div>
-            <h2 style={{ color: 'var(--navy)' }}>Discuss Your Stay</h2>
+            <h2 id="accommodation-enquiry-title" style={{ color: 'var(--navy)' }}>Discuss Your Stay</h2>
             <p style={{ color: 'var(--muted)', margin: '20px 0 30px' }}>Contact our team to discuss available accommodation options and stay arrangements in Dubai.</p>
             <Link className="button button-outline" href="/contact">Contact Us <ArrowRight size={17} /></Link>
           </Reveal>
