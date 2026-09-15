@@ -48,9 +48,9 @@ const reasons = [
 ]
 
 const heroSlides = [
-  { kicker: 'Language training', title: <>Build the skills<br /><em>that open doors.</em></>, lede: 'Practical language training for study, work, travel and everyday confidence.', label: 'LANGUAGES', href: '/courses' },
-  { kicker: 'Test preparation', title: <>Prepare with<br /><em>purpose.</em></>, lede: 'Focused preparation and expert guidance for the exam that supports your next move.', label: 'TEST PREPARATION', href: '/courses' },
-  { kicker: 'Study abroad', title: <>Go further.<br /><em>Go everywhere.</em></>, lede: 'Explore international study opportunities with a connected team behind you.', label: 'STUDY ABROAD', href: '/services' },
+  { kicker: 'Language training', title: <>Build the skills<br /><em>that open doors.</em></>, lede: 'Practical language training for study, work, travel and everyday confidence.', label: 'LANGUAGES', href: '/courses', image: courses.find((course) => course.slug === 'spoken-english')?.image ?? classroomImage },
+  { kicker: 'Test preparation', title: <>Prepare with<br /><em>purpose.</em></>, lede: 'Focused preparation and expert guidance for the exam that supports your next move.', label: 'TEST PREPARATION', href: '/courses', image: courses.find((course) => course.slug === 'ielts')?.image ?? classroomImage },
+  { kicker: 'Study abroad', title: <>Go further.<br /><em>Go everywhere.</em></>, lede: 'Explore international study opportunities with a connected team behind you.', label: 'STUDY ABROAD', href: '/services', image: dubaiImage },
 ]
 
 export default function Home() {
@@ -62,6 +62,8 @@ export default function Home() {
   return (
     <main className="setc-home">
       <section className="setc-hero" aria-labelledby="hero-title">
+        <Image className="setc-hero-slide-image" src={slide.image} alt="" fill priority={activeSlide === 0} sizes="100vw" />
+        <div className="setc-hero-slide-overlay" aria-hidden="true" />
         <div className="setc-hero-grid" aria-hidden="true" />
         <div className="setc-hero-ambient" aria-hidden="true" />
         <div className="setc-hero-orbit setc-orbit-one" aria-hidden="true" />
@@ -107,7 +109,7 @@ export default function Home() {
       </section>
 
       <section className="setc-brands section-pad" id="brands" aria-labelledby="brands-title">
-        <div className="container"><Reveal className="setc-section-intro"><p className="eyebrow"><span /> Our brands</p><h2 id="brands-title">One connected vision.</h2><p>Specialised brands. Focused expertise. Connected opportunities.</p></Reveal>
+        <div className="container"><Reveal className="setc-section-intro"><p className="eyebrow"><span /> Our brands</p><h2 id="brands-title">One connected vision.</h2><p>Specialised brands. Focused expertise. Connected opportunities.</p><Link className="setc-section-link" href="/brands">Explore Our Brands <ArrowRight size={16} /></Link></Reveal>
           <div className="setc-brand-grid">{brands.map((brand, index) => { const content = <><div className="setc-brand-logo"><Image src={brand.logo} alt={`${brand.name} logo`} width={220} height={110} loading="lazy" /></div><span className="setc-brand-index">0{index + 1}</span><h3>{brand.name}</h3><p className="setc-brand-focus">{brand.focus}</p><p>{brand.description}</p><span className="setc-brand-link">Explore brand <ArrowUpRight size={16} /></span></>; return <Reveal as="article" key={brand.name} className="setc-brand-card" delay={index * 100}>{brand.external ? <a href={brand.href} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${brand.name}`}>{content}</a> : <Link href={brand.href}>{content}</Link>}</Reveal> })}</div>
         </div>
       </section>

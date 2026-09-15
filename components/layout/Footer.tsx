@@ -65,6 +65,9 @@ export function Footer() {
           </div>
         </div>
       </div>
+      <nav className="footer-secondary-nav container" aria-label="Secondary navigation">
+        <Link href="/blog">Blog</Link><Link href="/faq">FAQ</Link><Link href="/contact">Contact</Link>
+      </nav>
       <div className="container footer-bottom">
         <div className="footer-brands">
           <span>Associated Brands:</span>
