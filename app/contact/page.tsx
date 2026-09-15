@@ -7,7 +7,7 @@ import { WHATSAPP_LINK, PHONE_LINK, PHONE_NUMBER, ADDRESS_LINES } from '@/lib/da
 
 export const metadata: Metadata = {
   title: 'Contact',
-  description: 'Contact Students Everywhere Training Center in Dubai. Call or WhatsApp +971 58 589 6200 or send us an enquiry.',
+  description: 'Contact Students Everywhere Training Center in Dubai. Call or WhatsApp +971 4 553 8344 or send us an enquiry.',
 };
 
 export default function ContactPage() {

@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { ArrowUpRight, ArrowRight, Globe2, MessageCircle, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Reveal } from '@/components/Reveal'
-import { WHATSAPP_LINK } from '@/lib/data'
+import { WHATSAPP_LINK, heroImages } from '@/lib/data'
 
 const brands = [
   {
@@ -47,9 +47,9 @@ const reasons = [
 ]
 
 const heroSlides = [
-  { kicker: 'Language training', title: <>Build the skills<br /><em>that open doors.</em></>, lede: 'Practical language training for study, work, travel and everyday confidence.', label: 'LANGUAGES', href: '/courses' },
-  { kicker: 'Test preparation', title: <>Prepare with<br /><em>purpose.</em></>, lede: 'Focused preparation and expert guidance for the exam that supports your next move.', label: 'TEST PREPARATION', href: '/courses' },
-  { kicker: 'Study abroad', title: <>Go further.<br /><em>Go everywhere.</em></>, lede: 'Explore international study opportunities with a connected team behind you.', label: 'STUDY ABROAD', href: '/services' },
+  { kicker: 'Language training', title: <>Build the skills<br /><em>that open doors.</em></>, lede: 'Practical language training for study, work, travel and everyday confidence.', label: 'LANGUAGES', href: '/courses', image: heroImages.classroom },
+  { kicker: 'Test preparation', title: <>Prepare with<br /><em>purpose.</em></>, lede: 'Focused preparation and expert guidance for the exam that supports your next move.', label: 'TEST PREPARATION', href: '/courses', image: heroImages.online },
+  { kicker: 'Study abroad', title: <>Go further.<br /><em>Go everywhere.</em></>, lede: 'Explore international study opportunities with a connected team behind you.', label: 'STUDY ABROAD', href: '/global-learning', image: heroImages.dubai },
 ]
 
 export default function Home() {
@@ -61,6 +61,7 @@ export default function Home() {
   return (
     <main className="setc-home">
       <section className="setc-hero" aria-labelledby="hero-title">
+        <img className="setc-hero-image" src={slide.image} alt="" aria-hidden="true" />
         <div className="setc-hero-grid" aria-hidden="true" />
         <div className="setc-hero-ambient" aria-hidden="true" />
         <div className="setc-hero-orbit setc-orbit-one" aria-hidden="true" />
