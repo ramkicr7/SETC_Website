@@ -3,6 +3,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
+import { BrandDetailContent } from '@/components/BrandDetailContent';
+import { brands } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Language Skills Dubai',
@@ -37,6 +39,7 @@ export default function LanguageSkillsPage() {
           </Reveal>
         </div>
       </section>
+      <BrandDetailContent name="Language Skills Dubai" description={brands.find((brand) => brand.name === 'Language Skills Dubai')?.description ?? 'Focused language training designed to help learners develop practical communication skills.'} focus={['Language Training']} />
     </main>
   );
 }

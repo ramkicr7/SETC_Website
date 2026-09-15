@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, MapPin, Phone, MessageCircle } from 'lucide-react';
+import { ArrowRight, MapPin, Phone, MessageCircle, BookOpen, Plane, Building2, Users, Headphones, Award, Compass, CheckCircle2 } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
 import { Gallery } from '@/components/Gallery';
 import { GlobalContactSection } from '@/components/layout/GlobalContactSection';
@@ -11,6 +11,24 @@ export const metadata: Metadata = {
   title: 'Dubai',
   description: 'Experience learning in Dubai — a global hub connecting learners from around the world. SETC is based in Al Barsha, Dubai.',
 };
+
+const dubaiJourney = [
+  { number: '01', title: 'Choose Your Course', text: 'Explore the available learning options and choose the course that matches your goals.', icon: Compass },
+  { number: '02', title: 'Prepare for Dubai', text: 'Receive guidance on the information and arrangements to consider before travelling.', icon: Plane },
+  { number: '03', title: 'Arrival & Settling In', text: 'Get practical guidance as you arrive and begin settling into your Dubai experience.', icon: MapPin },
+  { number: '04', title: 'Accommodation', text: 'Discuss available accommodation information and stay arrangements with the team.', icon: Building2 },
+  { number: '05', title: 'Start Your Training', text: 'Begin your selected course with a clear understanding of the available learning options.', icon: BookOpen },
+  { number: '06', title: 'Ongoing Student Support', text: 'Stay connected with the team for guidance and assistance during your training.', icon: Users },
+  { number: '07', title: 'Complete Your Course', text: 'Finish your course and review your progress and next learning goals.', icon: Award },
+  { number: '08', title: 'Next Step / Return Home', text: 'Consider your next opportunity and the direction you want to take after your course.', icon: CheckCircle2 },
+];
+
+const supportAreas = [
+  { title: 'Pre-arrival guidance', text: 'Information and guidance to help you prepare before travelling to Dubai.', icon: Plane },
+  { title: 'Accommodation coordination', text: 'Support discussing available accommodation options and stay arrangements.', icon: Building2 },
+  { title: 'Course coordination', text: 'Guidance on course options, learning formats and your training path.', icon: BookOpen },
+  { title: 'Student assistance', text: 'A point of contact for general questions and support during your stay.', icon: Headphones },
+];
 
 export default function DubaiPage() {
   return (
@@ -94,6 +112,36 @@ export default function DubaiPage() {
           <Reveal>
             <Gallery images={dubaiGallery} />
           </Reveal>
+        </div>
+      </section>
+
+      <section className="content-section dubai-journey-section">
+        <div className="container">
+          <Reveal className="center-heading">
+            <div className="eyebrow"><span /> Your Dubai experience</div>
+            <h2>Your Journey in Dubai</h2>
+            <p>From choosing your course to completing your training, SETC helps you understand the next step.</p>
+          </Reveal>
+          <div className="dubai-journey-grid">
+            {dubaiJourney.map((step, index) => {
+              const Icon = step.icon;
+              return <Reveal as="article" key={step.number} className="dubai-journey-card" delay={index * 60}><span className="dubai-journey-number">{step.number}</span><div className="dubai-journey-icon"><Icon size={20} /></div><h3>{step.title}</h3><p>{step.text}</p>{step.title === 'Accommodation' && <Link className="text-link dark-link dubai-journey-link" href="/accommodation">Explore accommodation <ArrowRight size={15} /></Link>}</Reveal>;
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="content-section" style={{ background: 'var(--navy)', color: 'white' }}>
+        <div className="container dubai-support-layout">
+          <Reveal className="dubai-support-intro">
+            <div className="eyebrow eyebrow-light"><span /> Student care and support</div>
+            <h2>Support Throughout Your Stay</h2>
+            <p>Our team can provide guidance, assistance and coordination as you prepare for Dubai, begin your course and work towards completion.</p>
+            <Link className="button button-blue" href="/contact">Talk to Our Team <ArrowRight size={17} /></Link>
+          </Reveal>
+          <div className="dubai-support-list">
+            {supportAreas.map((item, index) => { const Icon = item.icon; return <Reveal as="article" key={item.title} className="dubai-support-item" delay={index * 80}><div className="dubai-support-icon"><Icon size={21} /></div><div><h3>{item.title}</h3><p>{item.text}</p></div></Reveal>; })}
+          </div>
         </div>
       </section>
 

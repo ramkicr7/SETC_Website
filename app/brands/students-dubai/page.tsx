@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
+import { BrandDetailContent } from '@/components/BrandDetailContent';
 import { brands } from '@/lib/data';
 
 const brand = brands.find((item) => item.name === 'Students Dubai')!;
@@ -43,6 +44,7 @@ export default function StudentsDubaiPage() {
           </Reveal>
         </div>
       </section>
+      <BrandDetailContent name={brand.name} description={brand.description} focus={brand.focus} officialWebsite={brand.url} />
     </main>
   );
 }

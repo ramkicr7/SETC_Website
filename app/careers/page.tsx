@@ -14,24 +14,28 @@ const roles = [
   {
     title: 'English Language Trainer',
     focus: 'Full-time & Part-time',
+    location: 'Dubai',
     description: 'Deliver engaging English language and exam preparation training to diverse learner groups. Design lesson plans, assess progress and support student development.',
     icon: Globe2,
   },
   {
     title: 'Academic Coordinator',
     focus: 'Full-time',
+    location: 'Dubai',
     description: 'Support course scheduling, student enrolment, progress tracking and academic administration. Liaise between trainers, students and management.',
     icon: Target,
   },
   {
     title: 'Student Support Officer',
     focus: 'Full-time',
+    location: 'Dubai',
     description: 'Provide student guidance, handle enquiries, manage accommodation arrangements and support the learner experience throughout their journey.',
     icon: Users,
   },
   {
     title: 'Marketing & Content Specialist',
     focus: 'Full-time',
+    location: 'Dubai',
     description: 'Develop content, manage digital channels and create marketing materials that connect SETC with prospective learners in Dubai and beyond.',
     icon: Briefcase,
   },
@@ -74,13 +78,15 @@ export default function CareersPage() {
                     </div>
                     <div>
                       <h3 style={{ color: 'var(--navy)', margin: '0 0 4px', fontSize: 18, fontWeight: 700 }}>{role.title}</h3>
-                      <span style={{ color: 'var(--blue)', fontSize: 12, fontWeight: 600 }}>{role.focus}</span>
+                      <span style={{ color: 'var(--blue)', fontSize: 12, fontWeight: 600 }}>{role.location} · {role.focus}</span>
                     </div>
                   </div>
                   <p style={{ color: 'var(--muted)', margin: 0, fontSize: 14, lineHeight: 1.6 }}>{role.description}</p>
-                  <Link href="/careers#apply" className="text-link dark-link" style={{ marginTop: 'auto', fontSize: 13 }}>
-                    Learn more <ArrowRight size={14} />
-                  </Link>
+                  <details className="role-details">
+                    <summary>Role details</summary>
+                    <div><strong>Responsibilities</strong><p>{role.description}</p><strong>Requirements</strong><p>Details to be confirmed by SETC.</p></div>
+                  </details>
+                  <Link href={`/careers?position=${encodeURIComponent(role.title)}#apply`} className="button button-blue role-apply">Apply Now <ArrowRight size={14} /></Link>
                 </Reveal>
               );
             })}

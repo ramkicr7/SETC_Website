@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, MoveUpRight } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
+import { BrandDetailContent } from '@/components/BrandDetailContent';
 
 export const metadata: Metadata = {
   title: 'EnglishWise UAE',
@@ -37,6 +38,7 @@ export default function EnglishWisePage() {
           </Reveal>
         </div>
       </section>
+      <BrandDetailContent name="EnglishWise UAE" description="Focused preparation for English language and relevant professional examinations." focus={['Test Preparation']} officialWebsite="https://www.englishwise.ae/" />
     </main>
   );
 }
