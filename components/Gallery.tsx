@@ -36,8 +36,8 @@ export function Gallery({ images, className = '' }: { images: GalleryImage[]; cl
         </button>
         {images.length > 1 && (
           <div className="gallery-thumbs">
-            {images.slice(1, 3).map((img, i) => (
-              <button key={i} className="gallery-thumb" onClick={() => { setIndex(i + 1); setOpen(true); }} aria-label={`Open image ${i + 2}`}>
+            {images.slice(1).map((img, i) => (
+              <button key={img.url} className="gallery-thumb" onClick={() => { setIndex(i + 1); setOpen(true); }} aria-label={`Open image ${i + 2}`}>
                 <Image src={img.url} alt={img.alt} fill sizes="(max-width: 700px) 100vw, 300px" className="gallery-img" />
               </button>
             ))}
