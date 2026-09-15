@@ -49,7 +49,7 @@ export default function AccommodationPage() {
           <Reveal className="center-heading">
             <div className="eyebrow"><span /> Room gallery</div>
             <h2>Accommodation Gallery</h2>
-            <p>A preview of room options. Actual images will be updated when supplied by the client.</p>
+            <p>Explore the kind of clean, comfortable spaces learners can expect while staying in Dubai. Availability and final room assignments are confirmed personally by our team.</p>
           </Reveal>
           <Reveal>
             <Gallery images={accommodationGallery} />

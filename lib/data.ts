@@ -256,9 +256,12 @@ export const dubaiGallery = [
 ];
 
 export const accommodationGallery = [
-  { url: 'https://images.pexels.com/photos/31728412/pexels-photo-31728412.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', alt: 'Bright modern room' },
-  { url: 'https://images.pexels.com/photos/6588579/pexels-photo-6588579.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', alt: 'Modern apartment interior' },
-  { url: 'https://images.pexels.com/photos/4115551/pexels-photo-4115551.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', alt: 'Simple bedroom interior' },
+  { url: 'https://images.pexels.com/photos/31728412/pexels-photo-31728412.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', alt: 'Bright modern student bedroom' },
+  { url: 'https://images.pexels.com/photos/6588579/pexels-photo-6588579.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', alt: 'Modern shared apartment interior' },
+  { url: 'https://images.pexels.com/photos/4115551/pexels-photo-4115551.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', alt: 'Comfortable furnished bedroom' },
+  { url: 'https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', alt: 'Clean bedroom with natural light' },
+  { url: 'https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', alt: 'Contemporary apartment living area' },
+  { url: 'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', alt: 'Bright apartment kitchen and dining space' },
 ];
 
 export const heroImages = {
