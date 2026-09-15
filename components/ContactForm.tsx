@@ -6,7 +6,7 @@ import { courses } from '@/lib/data';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
-export function ContactForm({ compact = false }: { compact?: boolean }) {
+export function ContactForm({ compact = false, mode = 'default' }: { compact?: boolean; mode?: 'default' | 'careers' }) {
   const [status, setStatus] = useState<Status>('idle');
   const [error, setError] = useState('');
 
@@ -49,11 +49,19 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
         <label>Full Name<input name="name" required placeholder="Your name" /></label>
         <label>Email<input name="email" type="email" required placeholder="you@example.com" /></label>
         <label>Phone<input name="phone" type="tel" placeholder="+971 ..." /></label>
-        <label>Course / Area of Interest
+        <label>{mode === 'careers' ? 'Position' : 'Course / Area of Interest'}
           <select name="interest" defaultValue="">
-            <option value="" disabled>Select a course</option>
-            {courses.map((c) => <option key={c.slug} value={c.title}>{c.title}</option>)}
-            <option value="other">Other / Not sure yet</option>
+            <option value="" disabled>{mode === 'careers' ? 'Select a position' : 'Select a course'}</option>
+            {mode === 'careers' ? <>
+              <option>English Language Trainer</option>
+              <option>Academic Coordinator</option>
+              <option>Student Support Officer</option>
+              <option>Marketing &amp; Content Specialist</option>
+              <option>General enquiry</option>
+            </> : <>
+              {courses.map((c) => <option key={c.slug} value={c.title}>{c.title}</option>)}
+              <option value="other">Other / Not sure yet</option>
+            </>}
           </select>
         </label>
       </div>

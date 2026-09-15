@@ -326,6 +326,7 @@ img { max-width: 100%; display: block; }
 /* ===== WORLD MAP ===== */
 .world-map { background: var(--navy-deep); }
 .map-visual { position: relative; width: 100%; aspect-ratio: 2/1; border-radius: 12px; overflow: hidden; background: var(--navy-deep); border: 1px solid rgba(100,170,230,.1); }
+.map-visual .map-image { object-fit: contain; opacity: .9; }
 .map-glow { position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(17,167,238,.08), transparent 60%); }
 .map-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 .map-dots { position: absolute; inset: 0; }
@@ -451,18 +452,51 @@ img { max-width: 100%; display: block; }
 .dubai-experience-title { color: white; font-size: clamp(34px, 4.5vw, 56px); line-height: 1.05; letter-spacing: -.05em; margin: 16px 0 24px; font-weight: 800; }
 .dubai-experience-text { color: #c2d2e5; font-size: 17px; line-height: 1.7; max-width: 520px; margin: 0 0 30px; }
 
+.dubai-editorial-grid { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: 72px; align-items: center; }
+.dubai-editorial-image { min-height: 600px; position: relative; overflow: hidden; border-radius: 12px; box-shadow: 0 22px 55px rgba(3,24,61,.14); }
+.dubai-editorial-image img { object-fit: cover; transition: transform .7s ease; }
+.dubai-editorial-image:hover img { transform: scale(1.04); }
+.dubai-editorial-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 52%, rgba(3,24,61,.62)); pointer-events: none; }
+.dubai-editorial-image span { position: absolute; z-index: 1; left: 28px; bottom: 24px; color: white; font-size: 11px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+.dubai-editorial-copy .section-heading { display: block; margin-bottom: 30px; }
+.dubai-editorial-copy .section-heading > p { margin-top: 18px; max-width: 430px; }
+.dubai-benefit-list { border-top: 1px solid var(--line); }
+.dubai-benefit-item { position: relative; display: grid; grid-template-columns: 48px minmax(0, 1fr) 92px; gap: 16px; align-items: center; min-height: 112px; padding: 18px 0; border-bottom: 1px solid var(--line); overflow: hidden; }
+.dubai-benefit-item > div:not(.benefit-icon) { position: relative; z-index: 1; }
+.dubai-benefit-item .benefit-icon { margin: 0; width: 42px; height: 42px; }
+.dubai-benefit-item h3 { color: var(--navy); font-size: 16px; margin: 0 0 5px; }
+.dubai-benefit-item p { color: var(--muted); font-size: 13px; line-height: 1.55; margin: 0; }
+.dubai-benefit-thumb { position: relative; grid-column: 3; grid-row: 1; display: block; width: 92px; height: 72px; border-radius: 6px; overflow: hidden; opacity: .82; transition: transform .4s ease, opacity .3s ease; }
+.dubai-benefit-thumb img { object-fit: cover; }
+.dubai-benefit-item:hover .dubai-benefit-thumb, .dubai-benefit-item:focus-within .dubai-benefit-thumb { transform: scale(1.08); opacity: 1; }
+.dubai-city-grid { display: grid; grid-template-columns: minmax(260px, .72fr) minmax(0, 1.28fr); gap: 64px; align-items: start; }
+.dubai-city-intro h2 { color: var(--navy); font-size: clamp(36px, 5vw, 60px); line-height: 1.02; letter-spacing: -.05em; margin: 18px 0; }
+.dubai-city-intro > p { color: var(--muted); font-size: 15px; line-height: 1.7; max-width: 320px; }
+.dubai-city-collage { position: relative; min-height: 300px; margin-top: 38px; overflow: hidden; border-radius: 10px; }
+.dubai-city-collage img { object-fit: cover; }
+.dubai-activity-list { display: grid; gap: 14px; }
+.dubai-activity-card { position: relative; min-height: 190px; overflow: hidden; border-radius: 10px; isolation: isolate; color: white; }
+.dubai-activity-image { z-index: -2; object-fit: cover; transition: transform .6s ease; }
+.dubai-activity-overlay { position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(3,24,61,.86), rgba(3,24,61,.2)); }
+.dubai-activity-content { position: relative; z-index: 1; max-width: 460px; padding: 26px 30px; }
+.dubai-activity-content .benefit-icon { margin-bottom: 14px; background: rgba(255,255,255,.16); color: #a6f0e5; }
+.dubai-activity-content h3 { color: white; font-size: 20px; margin: 0 0 8px; }
+.dubai-activity-content p { color: #e0eaf5; font-size: 14px; line-height: 1.6; margin: 0; }
+.dubai-activity-card:hover .dubai-activity-image, .dubai-activity-card:focus-within .dubai-activity-image { transform: scale(1.05); }
+
 /* ===== DUBAI GALLERY ===== */
 .dubai-gallery-section { background: var(--paper); }
 
 /* ===== GALLERY ===== */
-.gallery-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 12px; max-width: 900px; margin: 0 auto; }
-.gallery-main { position: relative; aspect-ratio: 4/3; border-radius: 10px; overflow: hidden; border: 0; cursor: pointer; padding: 0; }
+.gallery-grid { display: grid; grid-template-columns: 1.35fr .85fr .85fr; grid-auto-rows: 180px; gap: 12px; max-width: 1040px; margin: 0 auto; }
+.gallery-tile { position: relative; min-width: 0; overflow: hidden; border: 0; border-radius: 10px; cursor: pointer; padding: 0; background: var(--navy); }
+.gallery-tile-featured { grid-row: span 2; }
 .gallery-img { object-fit: cover; transition: transform .4s ease; }
-.gallery-main:hover .gallery-img, .gallery-thumb:hover .gallery-img { transform: scale(1.04); }
+.gallery-tile:hover .gallery-img, .gallery-tile:focus-visible .gallery-img { transform: scale(1.05); }
 .gallery-overlay { position: absolute; inset: 0; background: rgba(3,24,61,.4); display: grid; place-items: center; opacity: 0; transition: opacity .25s; }
-.gallery-main:hover .gallery-overlay { opacity: 1; }
+.gallery-tile:hover .gallery-overlay, .gallery-tile:focus-visible .gallery-overlay { opacity: 1; }
 .gallery-overlay span { color: white; font-size: 14px; font-weight: 700; letter-spacing: .05em; }
-.gallery-thumbs { display: grid; grid-template-rows: 1fr 1fr; gap: 12px; }
+.gallery-tile:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
 .gallery-thumb { position: relative; aspect-ratio: 16/10; border-radius: 10px; overflow: hidden; border: 0; cursor: pointer; padding: 0; }
 
 /* ===== LIGHTBOX ===== */
@@ -660,8 +694,8 @@ img { max-width: 100%; display: block; }
   .languages-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
   .lang-card { padding: 28px 20px; }
   .lang-script { font-size: 32px; }
-  .gallery-grid { grid-template-columns: 1fr; }
-  .gallery-thumbs { grid-template-rows: 1fr 1fr; grid-template-columns: 1fr 1fr; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 150px; }
+  .gallery-tile-featured { grid-row: span 2; grid-column: span 2; }
   .dubai-experience { min-height: 400px; }
   .dubai-experience-content { padding: 64px 0; }
   .lightbox-nav { width: 40px; height: 40px; }
@@ -845,16 +879,131 @@ img { max-width: 100%; display: block; }
 .blog-card-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(3,24,61,.28)); pointer-events: none; }
 .blog-card-body { min-height: 270px; display: flex; flex-direction: column; }
 .blog-card-body .course-cta { margin-top: auto; }
-.world-map { background: #071b34; }
-.world-map .map-visual { position: relative; isolation: isolate; overflow: hidden; border: 1px solid rgba(73,190,255,.22); background: radial-gradient(circle at 50% 45%, rgba(23,150,215,.18), transparent 48%), #0a2848; box-shadow: inset 0 0 100px rgba(0,200,180,.08), 0 20px 80px rgba(2,14,34,.35); }
-.world-map .map-visual::before { content: ''; position: absolute; inset: 10%; border: 1px solid rgba(72,202,168,.2); border-radius: 50%; transform: scaleX(.6); box-shadow: 0 0 0 22px rgba(72,202,168,.04), 0 0 0 44px rgba(73,166,255,.04); pointer-events: none; }
-.world-map .map-svg { opacity: .92; }
-.world-map .world-grid { stroke: rgba(105,190,236,.2); }
-.world-map .map-svg g:nth-child(2) { fill: rgba(31,170,145,.16); stroke: rgba(75,220,185,.42); }
-.world-map .map-dot { background: #4de0b1; box-shadow: 0 0 18px rgba(77,224,177,.85); }
-.world-map .map-center { color: #d7fff2; text-shadow: 0 0 20px rgba(77,224,177,.3); }
-.world-map .map-center svg { color: #4de0b1; }
-@media (max-width: 700px) { .blog-intro { display: block; margin-bottom: 34px; }.blog-intro > p { margin-top: 18px; }.accommodation-standard { font-size: 10px; }.world-map .map-visual::before { inset: 16% 8%; } }
+.world-map { background: var(--paper); }
+.world-map .center-heading-light h2 { color: var(--navy); }
+.world-map .center-heading-light p { color: var(--muted); }
+.world-map .map-visual { background: rgba(255,255,255,.82); border-color: var(--line); box-shadow: 0 18px 45px rgba(3,24,61,.08); }
+.world-map .map-dot { background: var(--blue); box-shadow: 0 0 18px rgba(6,142,226,.5); }
+.world-map .map-center { color: var(--navy); }
+.world-map .map-center svg { color: var(--blue); }
+@media (max-width: 700px) { .blog-intro { display: block; margin-bottom: 34px; }.blog-intro > p { margin-top: 18px; }.accommodation-standard { font-size: 10px; } }
 .setc-hero-controls { display: flex; align-items: center; gap: 12px; margin-top: 28px; color: rgba(255,255,255,.66); font-size: 11px; letter-spacing: .16em; }
 .setc-hero-controls button { display: grid; place-items: center; width: 32px; height: 32px; border: 1px solid rgba(255,255,255,.35); border-radius: 50%; color: white; background: transparent; cursor: pointer; transition: background .2s ease, border-color .2s ease; }
 .setc-hero-controls button:hover, .setc-hero-controls button:focus-visible { background: rgba(255,255,255,.14); border-color: #fff; outline: none; }
+
+/* The home hero keeps the existing header structure, but gives its links a calm readable surface. */
+.site-header.is-transparent { background: rgba(255,255,255,.96); border-bottom-color: rgba(3,24,61,.1); box-shadow: 0 4px 24px rgba(3,24,61,.08); backdrop-filter: blur(14px); }
+.site-header.is-transparent .brand { color: var(--navy); }
+.site-header.is-transparent .brand small { color: var(--muted); }
+.site-header.is-transparent .desktop-nav a { color: #30435d; }
+.site-header.is-transparent .desktop-nav a:hover, .site-header.is-transparent .desktop-nav a.nav-active { color: var(--navy); }
+.site-header.is-transparent .menu-button { color: var(--navy); }
+
+/* Keep the hero editorial at every width while allowing the network to yield space. */
+.setc-hero { min-height: 760px; }
+.setc-hero-content { min-height: 760px; grid-template-columns: minmax(0, 1.1fr) minmax(420px, .9fr); padding-top: 36px; padding-bottom: 56px; }
+.setc-hero-copy { min-width: 0; }
+.setc-hero h1 { max-width: 680px; font-size: clamp(52px, 6.2vw, 88px); line-height: .96; overflow-wrap: anywhere; }
+.setc-hero-lede { margin-bottom: 0; }
+
+/* Pathways are the primary decision point, so each one gets a visual entry point. */
+.setc-service-list { align-items: stretch; }
+.setc-service-row { min-height: 430px; padding: 0; overflow: hidden; border-radius: 10px; }
+.setc-service-row:hover, .setc-service-row:focus-within { padding-left: 0; transform: translateY(-6px); }
+.setc-service-card-link { display: flex; height: 100%; flex-direction: column; color: inherit; }
+.setc-service-image { position: relative; min-height: 190px; overflow: hidden; background: var(--navy); }
+.setc-service-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 25%, rgba(3,24,61,.62)); }
+.setc-service-image img { object-fit: cover; transition: transform .55s ease; }
+.setc-service-row:hover .setc-service-image img, .setc-service-row:focus-within .setc-service-image img { transform: scale(1.06); }
+.setc-service-card-content { display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: 25px 28px 28px; background: #fff; }
+.setc-service-card-content h3 { margin: 10px 0 8px; }
+.setc-service-card-content p { margin: 0; }
+.setc-service-cta { display: inline-flex; align-items: center; gap: 9px; margin-top: auto; padding-top: 22px; color: var(--blue); font-size: 13px; font-weight: 800; }
+.setc-service-cta .setc-service-arrow { margin: 0; }
+
+.course-card-link { padding: 0 !important; }
+.course-card-link > :not(.course-card-thumb) { margin-left: 22px; margin-right: 22px; }
+.course-card-link > .course-icon { margin-top: -18px; position: relative; z-index: 2; }
+.course-card-link > .course-type { margin-top: 18px; }
+.course-card-link > .course-cta { margin-bottom: 22px; }
+.course-card-thumb { flex: 0 0 auto; }
+.course-card:hover .course-card-img-el { transform: scale(1.06); }
+
+.course-detail-hero { position: relative; overflow: hidden; background: var(--navy); color: white; padding: 76px 0 84px; }
+.course-detail-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 78% 42%, rgba(17,167,238,.2), transparent 34%); pointer-events: none; }
+.course-detail-hero-grid { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(360px, .8fr); gap: 64px; align-items: center; }
+.course-detail-hero-copy { min-width: 0; }
+.course-detail-hero-copy h1 { color: white; font-size: clamp(38px, 5vw, 66px); line-height: 1.02; letter-spacing: -.05em; margin: 16px 0 18px; }
+.course-detail-hero-copy > p { max-width: 590px; color: #bdcce0; font-size: 17px; line-height: 1.65; margin: 0; }
+.course-detail-hero-visual { position: relative; min-height: 380px; overflow: hidden; border: 1px solid rgba(255,255,255,.18); border-radius: 12px; box-shadow: 0 25px 70px rgba(0,0,0,.24); }
+.course-detail-hero-visual::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(3,24,61,.36)); }
+.course-detail-hero-visual img { object-fit: cover; }
+.course-detail-content { max-width: 980px; }
+.course-detail-content > div { max-width: 780px; }
+
+.global-contact-section { position: relative; isolation: isolate; overflow: hidden; padding: 100px 0; background: #f4f8fb; }
+.global-contact-map { z-index: 0; object-fit: cover; object-position: center; opacity: .62; }
+.global-contact-overlay { position: absolute; inset: 0; z-index: 1; background: rgba(255,255,255,.56); }
+.global-contact-content { position: relative; z-index: 2; }
+.global-contact-section .contact-info { padding: 30px; border: 1px solid rgba(255,255,255,.8); border-radius: 10px; background: rgba(255,255,255,.72); box-shadow: 0 14px 38px rgba(3,24,61,.07); }
+.global-contact-section .contact-info h2 { margin-top: 16px; }
+.global-contact-section .form-card { box-shadow: 0 18px 45px rgba(3,24,61,.12); }
+.global-location-section { padding: 92px 0; }
+.global-location-section .center-heading h2 { color: var(--navy); }
+.global-location-section .center-heading p { color: var(--ink); }
+.global-location-section .map-placeholder { max-width: none; margin: 30px auto 0; padding: 0; border: 0; border-radius: 0; background: transparent; }
+.global-location-section .map-placeholder svg { color: var(--blue); margin: 0 auto 14px; }
+.global-location-section .map-placeholder p { color: var(--ink); }
+.global-location-section .button-outline { background: rgba(255,255,255,.82); }
+
+@media (max-width: 900px) {
+  .setc-hero { min-height: 0; }
+  .setc-hero-content { min-height: 0; grid-template-columns: 1fr; padding-top: 44px; }
+  .setc-hero h1 { font-size: clamp(50px, 9vw, 82px); }
+  .course-detail-hero-grid { grid-template-columns: 1fr; gap: 38px; }
+  .course-detail-hero-visual { min-height: 320px; }
+  .dubai-editorial-grid, .dubai-city-grid { grid-template-columns: 1fr; gap: 42px; }
+  .dubai-editorial-image { min-height: 420px; }
+  .dubai-city-collage { min-height: 260px; max-width: 420px; }
+}
+
+@media (max-width: 600px) {
+  .setc-hero-content { padding-top: 34px; padding-bottom: 50px; }
+  .setc-hero h1 { font-size: clamp(45px, 14vw, 68px); line-height: .96; }
+  .setc-service-row { min-height: 390px; }
+  .setc-service-card-content { padding: 23px 22px 24px; }
+  .course-detail-hero { padding: 54px 0 58px; }
+  .course-detail-hero-visual { min-height: 250px; }
+  .dubai-editorial-image { min-height: 330px; }
+  .dubai-benefit-item { grid-template-columns: 42px minmax(0, 1fr) 72px; gap: 12px; }
+  .dubai-benefit-thumb { width: 72px; height: 62px; }
+  .dubai-city-intro h2 { font-size: 42px; }
+  .dubai-activity-card { min-height: 210px; }
+  .dubai-activity-content { padding: 24px; }
+  .global-contact-section { padding: 64px 0; }
+  .global-contact-section .contact-info { padding: 24px; }
+  .global-location-section { padding: 64px 0; }
+  .global-contact-map { object-position: center; opacity: .4; }
+}
+
+/* Homepage pathway cards keep the three services visible as one decision set. */
+.setc-service-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; border-top: 0; }
+.setc-service-row { display: flex; min-height: 280px; flex-direction: column; align-items: flex-start; gap: 16px; padding: 28px; border: 1px solid #cbd8e7; background: #fff; }
+.setc-service-row:hover, .setc-service-row:focus-within { padding-left: 28px; border-color: #8bbff2; box-shadow: 0 18px 38px rgba(16,35,63,.08); }
+.setc-service-row h3 { margin: 10px 0 0; }
+.setc-service-row p { margin: 0; }
+.setc-service-arrow { margin-top: auto; }
+.setc-brand-card:focus-within { transform: translateY(-8px); box-shadow: 0 24px 55px rgba(16,35,63,.12); }
+.brand-detail-card { position: relative; display: flex; flex-direction: column; }
+.brand-detail-main { flex: 1; }
+.brand-website-link { display: inline-flex; align-items: center; gap: 7px; margin: 0 30px 26px; color: var(--blue); font-size: 13px; font-weight: 800; }
+.brand-website-link:focus-visible, .brand-detail-link:focus-visible, .setc-brand-card a:focus-visible { outline: 3px solid rgba(6,142,226,.35); outline-offset: -3px; }
+
+@media (max-width: 900px) {
+  .setc-service-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+  .setc-service-list { grid-template-columns: 1fr; }
+  .setc-service-row { min-height: 0; }
+}

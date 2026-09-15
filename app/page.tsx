@@ -1,19 +1,20 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
 import { ArrowUpRight, ArrowRight, Globe2, MessageCircle, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Reveal } from '@/components/Reveal'
-import { WHATSAPP_LINK } from '@/lib/data'
+import { classroomImage, courses, dubaiImage, WHATSAPP_LINK } from '@/lib/data'
 
 const brands = [
   {
     name: 'Students Dubai',
     focus: 'Languages · Test Preparation · Study Abroad',
     description: 'Supporting learners through language development, examination preparation and international study opportunities.',
-    href: 'https://www.studentsdubai.com',
+    href: '/brands/students-dubai',
     logo: '/assets/images/logos/SETC_(1).png',
-    external: true,
+    external: false,
   },
   {
     name: 'Language Skills Dubai',
@@ -27,16 +28,16 @@ const brands = [
     name: 'EnglishWise UAE',
     focus: 'Test Preparation',
     description: 'Focused preparation for English language and relevant professional examinations.',
-    href: 'https://www.englishwise.ae/',
+    href: '/englishwise',
     logo: '/assets/images/brands/Englishwise_UAE.png',
-    external: true,
+    external: false,
   },
 ]
 
 const services = [
-  ['01', 'Language Training', 'Build stronger language and communication skills for academic, professional and everyday opportunities.'],
-  ['02', 'Test Preparation', 'Structured preparation for IELTS, PTE, OET, NAATI CCL, CELPIP, LanguageCert and other relevant examinations.'],
-  ['03', 'Study Abroad', 'Guidance and support for students exploring international study opportunities.'],
+  ['01', 'Language Training', 'Build stronger language and communication skills for academic, professional and everyday opportunities.', courses.find((course) => course.slug === 'spoken-english')?.image ?? classroomImage, '/courses/spoken-english'],
+  ['02', 'Test Preparation', 'Structured preparation for IELTS, PTE, OET, NAATI CCL, CELPIP, LanguageCert and other relevant examinations.', courses.find((course) => course.slug === 'ielts')?.image ?? classroomImage, '/courses'],
+  ['03', 'Study Abroad', 'Guidance and support for students exploring international study opportunities.', dubaiImage, '/global-learning'],
 ]
 
 const reasons = [
@@ -107,12 +108,11 @@ export default function Home() {
 
       <section className="setc-brands section-pad" id="brands" aria-labelledby="brands-title">
         <div className="container"><Reveal className="setc-section-intro"><p className="eyebrow"><span /> Our brands</p><h2 id="brands-title">One connected vision.</h2><p>Specialised brands. Focused expertise. Connected opportunities.</p></Reveal>
-          <Reveal className="setc-ecosystem-line" aria-hidden="true"><span>SETC</span><i /><i /><i /></Reveal>
-          <div className="setc-brand-grid">{brands.map((brand, index) => { const content = <><div className="setc-brand-logo"><img src={brand.logo} alt={`${brand.name} logo`} width={220} height={110} loading="lazy" /></div><span className="setc-brand-index">0{index + 1}</span><h3>{brand.name}</h3><p className="setc-brand-focus">{brand.focus}</p><p>{brand.description}</p><span className="setc-brand-link">Explore brand <ArrowUpRight size={16} /></span></>; return <Reveal as="article" key={brand.name} className="setc-brand-card" delay={index * 100}>{brand.external ? <a href={brand.href} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${brand.name}`}>{content}</a> : <Link href={brand.href}>{content}</Link>}</Reveal> })}</div>
+          <div className="setc-brand-grid">{brands.map((brand, index) => { const content = <><div className="setc-brand-logo"><Image src={brand.logo} alt={`${brand.name} logo`} width={220} height={110} loading="lazy" /></div><span className="setc-brand-index">0{index + 1}</span><h3>{brand.name}</h3><p className="setc-brand-focus">{brand.focus}</p><p>{brand.description}</p><span className="setc-brand-link">Explore brand <ArrowUpRight size={16} /></span></>; return <Reveal as="article" key={brand.name} className="setc-brand-card" delay={index * 100}>{brand.external ? <a href={brand.href} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${brand.name}`}>{content}</a> : <Link href={brand.href}>{content}</Link>}</Reveal> })}</div>
         </div>
       </section>
 
-      <section className="setc-services section-pad" id="services" aria-labelledby="services-title"><div className="container"><Reveal><p className="eyebrow"><span /> What we help you move towards</p><h2 id="services-title">Three pathways.<br /><span>Many possibilities.</span></h2></Reveal><div className="setc-service-list">{services.map(([number, title, text], index) => <Reveal as="article" className="setc-service-row" key={title} delay={index * 80}><span className="setc-service-number">{number}</span><h3>{title}</h3><p>{text}</p><ArrowUpRight className="setc-service-arrow" size={22} /></Reveal>)}</div></div></section>
+      <section className="setc-services section-pad" id="services" aria-labelledby="services-title"><div className="container"><Reveal><p className="eyebrow"><span /> What we help you move towards</p><h2 id="services-title">Three pathways.<br /><span>Many possibilities.</span></h2></Reveal><div className="setc-service-list">{services.map(([number, title, text, image, href], index) => <Reveal as="article" className="setc-service-row" key={title} delay={index * 80}><Link href={href} className="setc-service-card-link" aria-label={`${title} pathway`}><div className="setc-service-image"><Image src={image} alt="" fill sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw" /></div><div className="setc-service-card-content"><span className="setc-service-number">{number}</span><h3>{title}</h3><p>{text}</p><span className="setc-service-cta" aria-hidden="true"><ArrowUpRight className="setc-service-arrow" size={22} /></span></div></Link></Reveal>)}</div></div></section>
 
       <section className="setc-why section-pad" aria-labelledby="why-title"><div className="container"><Reveal className="setc-section-intro"><p className="eyebrow"><span /> Why SETC</p><h2 id="why-title">Built around your next step.</h2></Reveal><div className="setc-reason-grid">{reasons.map(([number, title, text], index) => <Reveal key={title} className="setc-reason" delay={index * 80}><span>{number}</span><h3>{title}</h3><p>{text}</p></Reveal>)}</div></div></section>
 

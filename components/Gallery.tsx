@@ -30,19 +30,12 @@ export function Gallery({ images, className = '' }: { images: GalleryImage[]; cl
   return (
     <>
       <div className={`gallery-grid ${className}`}>
-        <button className="gallery-main" onClick={() => { setIndex(0); setOpen(true); }} aria-label="Open gallery">
-          <Image src={images[0].url} alt={images[0].alt} fill sizes="(max-width: 700px) 100vw, 600px" className="gallery-img" />
-          <div className="gallery-overlay"><span>View Gallery</span></div>
-        </button>
-        {images.length > 1 && (
-          <div className="gallery-thumbs">
-            {images.slice(1, 3).map((img, i) => (
-              <button key={i} className="gallery-thumb" onClick={() => { setIndex(i + 1); setOpen(true); }} aria-label={`Open image ${i + 2}`}>
-                <Image src={img.url} alt={img.alt} fill sizes="(max-width: 700px) 100vw, 300px" className="gallery-img" />
-              </button>
-            ))}
-          </div>
-        )}
+        {images.map((img, i) => (
+          <button key={img.url} className={`gallery-tile ${i === 0 ? 'gallery-tile-featured' : ''}`} onClick={() => { setIndex(i); setOpen(true); }} aria-label={`Open image ${i + 1}: ${img.alt}`}>
+            <Image src={img.url} alt={img.alt} fill sizes={i === 0 ? '(max-width: 700px) 100vw, 600px' : '(max-width: 700px) 50vw, 300px'} className="gallery-img" />
+            <div className="gallery-overlay"><span>{i === 0 ? 'View Gallery' : img.alt}</span></div>
+          </button>
+        ))}
       </div>
       {open && (
         <div className="lightbox" onClick={close} role="dialog" aria-modal="true">

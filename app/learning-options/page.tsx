@@ -56,7 +56,7 @@ export default function LearningOptionsPage() {
         <div className="container contact-grid">
           <Reveal className="contact-info" style={{ color: 'var(--ink)' }}>
             <div className="eyebrow"><span /> Find your option</div>
-            <h2 style={{ color: 'var(--navy)' }}>Not Sure Which Format Suits You?</h2>
+            <h2 id="learning-option-title" style={{ color: 'var(--navy)' }}>Not Sure Which Format Suits You?</h2>
             <p style={{ color: 'var(--muted)', margin: '20px 0 30px' }}>Tell us about your schedule and goals. Our team will help you choose the right learning option.</p>
             <Link className="button button-blue" href="/contact">Talk to Our Team <ArrowRight size={17} /></Link>
           </Reveal>

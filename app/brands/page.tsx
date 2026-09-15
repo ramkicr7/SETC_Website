@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
 import { brands as brandsData, WHATSAPP_LINK, PHONE_LINK, PHONE_NUMBER } from '@/lib/data';
@@ -24,17 +25,11 @@ export default function BrandsPage() {
       <section className="content-section" style={{ background: 'var(--paper)' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 24, marginBottom: 60 }}>
-            {brandsData.map((brand, idx) => {
-              const isExternal = !!brand.url;
-              const href = brand.url || brand.internalHref || '/';
-              const LinkTag = isExternal ? 'a' : Link;
-              const linkProps = isExternal ? { href, target: '_blank', rel: 'noopener noreferrer' } : { href };
-
-              return (
-                <Reveal as="article" key={brand.name} className="brand-detail-card" delay={idx * 100}>
-                  <LinkTag {...linkProps} className="brand-detail-link">
+            {brandsData.map((brand, idx) => (
+              <Reveal as="article" key={brand.name} className="brand-detail-card" delay={idx * 100}>
+                <Link href={brand.internalHref || '/'} className="brand-detail-link">
                     <div className="brand-detail-logo">
-                      <img src={brand.logo} alt={`${brand.name} logo`} width={240} height={120} loading="lazy" />
+                      <Image src={brand.logo} alt={`${brand.name} logo`} width={240} height={120} loading="lazy" />
                     </div>
                     <h3>{brand.name}</h3>
                     <p className="brand-tagline">{brand.tagline}</p>
@@ -47,10 +42,10 @@ export default function BrandsPage() {
                     <span className="brand-explore">
                       Explore brand <ArrowUpRight size={16} />
                     </span>
-                  </LinkTag>
-                </Reveal>
-              );
-            })}
+                </Link>
+                {brand.url && <a className="brand-website-link" href={brand.url} target="_blank" rel="noopener noreferrer">Visit website <ArrowUpRight size={16} /></a>}
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
@@ -59,7 +54,7 @@ export default function BrandsPage() {
         <div className="container contact-grid">
           <Reveal className="contact-info" style={{ color: 'var(--ink)' }}>
             <div className="eyebrow"><span /> Connect with SETC</div>
-            <h2 style={{ color: 'var(--navy)' }}>Get in Touch</h2>
+            <h2 id="brands-contact-title" style={{ color: 'var(--navy)' }}>Get in Touch</h2>
             <p style={{ color: 'var(--muted)', margin: '20px 0 30px' }}>Have questions about any of our brands? Contact our team to learn more about how we can support your learning goals.</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               <a href={PHONE_LINK} className="button button-blue">

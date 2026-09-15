@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
 import { courses } from '@/lib/data';
@@ -27,6 +28,7 @@ export default function CoursesPage() {
             {courses.map((course, i) => (
               <Reveal as="article" key={course.slug} className="course-card" delay={i * 80}>
                 <Link href={`/courses/${course.slug}`} className="course-card-link">
+                  <div className="course-card-thumb"><Image src={course.image} alt="" fill sizes="(max-width: 700px) 100vw, (max-width: 1024px) 33vw, 25vw" className="course-card-img-el" /><div className="course-card-overlay" /></div>
                   <div className={`course-icon ${course.tone}`}><course.icon size={24} /></div>
                   <span className="course-type">{course.short}</span>
                   <h3>{course.title}</h3>

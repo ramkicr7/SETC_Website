@@ -27,7 +27,10 @@ export default function LanguageSkillsPage() {
             <div className="eyebrow"><span /> About Language Skills</div>
             <h2>Develop Practical Language Skills</h2>
             <p>Language Skills Dubai is a language-focused brand supporting learners who want to develop practical communication and language skills. The brand can support relevant English language learning and skills development requirements.</p>
-            <Link className="button button-outline" href="/contact">Enquire Now <ArrowRight size={17} /></Link>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              <Link className="button button-outline" href="/contact">Enquire Now <ArrowRight size={17} /></Link>
+              <Link className="button button-blue" href="/brands">All Brands <ArrowRight size={17} /></Link>
+            </div>
           </Reveal>
           <Reveal className="brand-visual brand-visual-light" delay={150}>
             <Image src="/assets/images/brands/Languageskills.png" alt="Language Skills Training Center" width={260} height={190} className="brand-logo-img" />

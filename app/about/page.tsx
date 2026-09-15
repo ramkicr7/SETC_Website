@@ -85,7 +85,7 @@ export default function AboutPage() {
         <div className="container contact-grid">
           <Reveal className="contact-info" style={{ color: 'var(--ink)' }}>
             <div className="eyebrow"><span /> Get in touch</div>
-            <h2 style={{ color: 'var(--navy)' }}>Talk to Our Team</h2>
+            <h2 id="about-team-title" style={{ color: 'var(--navy)' }}>Talk to Our Team</h2>
             <p style={{ color: 'var(--muted)', margin: '20px 0 30px' }}>Tell us about your learning goals. We&apos;ll help you find the right training path.</p>
             <Link className="button button-blue" href="/contact">Enquire Now <ArrowRight size={17} /></Link>
           </Reveal>

@@ -3,11 +3,12 @@ import Link from 'next/link';
 import { Clock3, MapPin, MessageCircle, Phone } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
 import { ContactForm } from '@/components/ContactForm';
+import { GlobalContactSection } from '@/components/layout/GlobalContactSection';
 import { WHATSAPP_LINK, PHONE_LINK, PHONE_NUMBER, ADDRESS_LINES } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Contact',
-  description: 'Contact Students Everywhere Training Center in Dubai. Call or WhatsApp +971 58 589 6200 or send us an enquiry.',
+  description: 'Contact Students Everywhere Training Center in Dubai. Call or WhatsApp +971 4 553 8344 or send us an enquiry.',
 };
 
 export default function ContactPage() {
@@ -26,7 +27,7 @@ export default function ContactPage() {
         <div className="container contact-grid">
           <Reveal className="contact-info" style={{ color: 'var(--ink)' }}>
             <div className="eyebrow"><span /> Contact details</div>
-            <h2 style={{ color: 'var(--navy)' }}>Talk to Our Team</h2>
+            <h2 id="contact-team-title" style={{ color: 'var(--navy)' }}>Talk to Our Team</h2>
             <p style={{ color: 'var(--muted)', margin: '20px 0 30px' }}>Reach out by phone, WhatsApp or the enquiry form. We&apos;ll help you find the right training path.</p>
             <div className="contact-details">
               <a href={PHONE_LINK} style={{ color: 'var(--ink)' }}>
@@ -52,11 +53,11 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="map-section">
+      <GlobalContactSection className="global-location-section" labelledBy="contact-location-title">
         <div className="container">
           <Reveal className="center-heading">
             <div className="eyebrow"><span /> Find us</div>
-            <h2>Visit Our Training Center</h2>
+            <h2 id="contact-location-title">Visit Our Training Center</h2>
             <p>{ADDRESS_LINES.join(', ')}</p>
           </Reveal>
         </div>
@@ -65,7 +66,7 @@ export default function ContactPage() {
           <p>Official Google Maps embed will appear here once the verified location link is provided.</p>
           <a className="button button-outline" href="https://maps.google.com/?q=Pinnacle+Building+Sheikh+Zayed+Road+Al+Barsha+Dubai" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
         </Reveal>
-      </section>
+      </GlobalContactSection>
     </main>
   );
 }

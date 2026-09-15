@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ArrowRight, Users, Target, Globe2, Briefcase, Award, Heart } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
 import { PHONE_LINK, PHONE_NUMBER, WHATSAPP_LINK } from '@/lib/data';
+import { ContactForm } from '@/components/ContactForm';
 
 export const metadata: Metadata = {
   title: 'Careers',
@@ -60,7 +61,7 @@ export default function CareersPage() {
           <Reveal className="center-heading">
             <div className="eyebrow"><span /> Current opportunities</div>
             <h2>Open Roles</h2>
-            <p>We're looking for passionate professionals to join the SETC team. Explore our current openings and apply today.</p>
+            <p>We&apos;re looking for passionate professionals to join the SETC team. Explore our current openings and apply today.</p>
           </Reveal>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24 }}>
             {roles.map((role, idx) => {
@@ -77,7 +78,7 @@ export default function CareersPage() {
                     </div>
                   </div>
                   <p style={{ color: 'var(--muted)', margin: 0, fontSize: 14, lineHeight: 1.6 }}>{role.description}</p>
-                  <Link href="/contact?ref=careers" className="text-link dark-link" style={{ marginTop: 'auto', fontSize: 13 }}>
+                  <Link href="/careers#apply" className="text-link dark-link" style={{ marginTop: 'auto', fontSize: 13 }}>
                     Learn more <ArrowRight size={14} />
                   </Link>
                 </Reveal>
@@ -111,11 +112,27 @@ export default function CareersPage() {
         </div>
       </section>
 
+      <section className="content-section" id="apply">
+        <div className="container contact-grid">
+          <Reveal className="contact-info" style={{ color: 'var(--ink)' }}>
+            <div className="eyebrow"><span /> Apply or enquire</div>
+            <h2 id="careers-application-title" style={{ color: 'var(--navy)' }}>Tell Us About Yourself</h2>
+            <p style={{ color: 'var(--muted)', margin: '20px 0 30px' }}>Use the form to express your interest in a current position or submit a general enquiry.</p>
+          </Reveal>
+          <Reveal delay={150}>
+            <div className="form-card">
+              <div className="form-heading"><span>CAREERS</span><h3>Application Enquiry</h3></div>
+              <ContactForm mode="careers" />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       <section className="content-section">
         <div className="container contact-grid">
           <Reveal className="contact-info" style={{ color: 'var(--ink)' }}>
             <div className="eyebrow"><span /> Get in touch</div>
-            <h2 style={{ color: 'var(--navy)' }}>Interested in Joining Us?</h2>
+            <h2 id="careers-contact-title" style={{ color: 'var(--navy)' }}>Interested in Joining Us?</h2>
             <p style={{ color: 'var(--muted)', margin: '20px 0 30px' }}>Have questions about career opportunities at SETC? Contact our team to learn more or express your interest in a specific role.</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               <a href={PHONE_LINK} className="button button-blue">
@@ -129,7 +146,7 @@ export default function CareersPage() {
           <Reveal delay={150} style={{ background: 'var(--paper)', padding: 40, borderRadius: 8, display: 'flex', flexDirection: 'column', gap: 24 }}>
             <div>
               <h3 style={{ color: 'var(--navy)', margin: '0 0 12px', fontSize: 16, fontWeight: 700 }}>Not seeing the right role?</h3>
-              <p style={{ color: 'var(--muted)', margin: 0, fontSize: 14, lineHeight: 1.6 }}>We're always interested in hearing from talented professionals. Reach out to express your interest or submit a general enquiry.</p>
+              <p style={{ color: 'var(--muted)', margin: 0, fontSize: 14, lineHeight: 1.6 }}>We&apos;re always interested in hearing from talented professionals. Reach out to express your interest or submit a general enquiry.</p>
             </div>
             <Link href="/contact" className="button button-blue">
               Send Enquiry <ArrowRight size={16} />
@@ -144,7 +161,7 @@ export default function CareersPage() {
             <div className="eyebrow eyebrow-light"><span /> Ready to make an impact</div>
             <h2 style={{ color: 'white', marginTop: 16 }}>Build Your Career With SETC</h2>
             <p style={{ color: '#9fb7d5', maxWidth: 500, margin: '16px auto 30px' }}>Join a team dedicated to helping learners achieve their goals through quality education and support.</p>
-            <Link href="/contact?ref=careers" className="button button-blue">
+            <Link href="/careers#apply" className="button button-blue">
               Apply or Enquire Now <ArrowRight size={16} />
             </Link>
           </Reveal>
