@@ -106,6 +106,23 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="setc-visual-strip" aria-label="SETC learning pathways">
+        <div className="container setc-visual-grid">
+          <Reveal className="setc-visual-card setc-visual-card-large">
+            <img src={heroImages.classroom} alt="Students learning together in a classroom" loading="lazy" />
+            <div><span>01 / Learn together</span><h2>Confidence grows in the right environment.</h2></div>
+          </Reveal>
+          <Reveal className="setc-visual-card" delay={100}>
+            <img src={heroImages.online} alt="Learner attending an online lesson" loading="lazy" />
+            <div><span>02 / Learn flexibly</span><h2>Training that fits your next step.</h2></div>
+          </Reveal>
+          <Reveal className="setc-visual-card" delay={180}>
+            <img src={heroImages.dubai} alt="Dubai skyline at sunset" loading="lazy" />
+            <div><span>03 / Go further</span><h2>Global opportunities start here.</h2></div>
+          </Reveal>
+        </div>
+      </section>
+
       <section className="setc-brands section-pad" id="brands" aria-labelledby="brands-title">
         <div className="container"><Reveal className="setc-section-intro"><p className="eyebrow"><span /> Our brands</p><h2 id="brands-title">One connected vision.</h2><p>Specialised brands. Focused expertise. Connected opportunities.</p></Reveal>
           <Reveal className="setc-ecosystem-line" aria-hidden="true"><span>SETC</span><i /><i /><i /></Reveal>
