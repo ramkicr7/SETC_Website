@@ -1056,3 +1056,7 @@ img { max-width: 100%; display: block; }
   .setc-service-row { min-height: 0; }
   .footer-secondary-nav { gap: 20px; }
 }
+
+body:has(.studio-root) { overflow: hidden; }
+body:has(.studio-root) .site-header, body:has(.studio-root) footer, body:has(.studio-root) .floating-buttons { display: none; }
+.studio-root { min-height: 100vh; background: #fff; }
