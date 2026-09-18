@@ -1,10 +1,13 @@
-'use client'
+import { redirect } from 'next/navigation'
 
-import { NextStudio } from 'next-sanity/studio'
-import config from '../../../sanity.config'
+type Props = {
+  params: {
+    index?: string[]
+  }
+}
 
-export const dynamic = 'force-static'
+export default function StudioPage({ params }: Props) {
+  const path = params.index?.length ? `/admin/${params.index.join('/')}` : '/admin'
 
-export default function StudioPage() {
-  return <div className="studio-root"><NextStudio config={config} /></div>
+  redirect(path)
 }

@@ -6,24 +6,27 @@ import { ArrowRight, Check, MessageCircle, Phone } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
 import { ContactForm } from '@/components/ContactForm';
 import { courses, WHATSAPP_LINK, PHONE_LINK, PHONE_NUMBER } from '@/lib/data';
+import { getCourseBySlug } from '@/lib/sanity';
 
 type Props = { params: { slug: string } };
+
+export const revalidate = 3600;
 
 export function generateStaticParams() {
   return courses.map((c) => ({ slug: c.slug }));
 }
 
-export function generateMetadata({ params }: Props): Metadata {
-  const course = courses.find((c) => c.slug === params.slug);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const course = await getCourseBySlug(params.slug);
   if (!course) return { title: 'Course Not Found' };
   return {
-    title: course.title,
-    description: course.description,
+    title: course.seoTitle || course.title,
+    description: course.seoDescription || course.description,
   };
 }
 
-export default function CourseDetailPage({ params }: Props) {
-  const course = courses.find((c) => c.slug === params.slug);
+export default async function CourseDetailPage({ params }: Props) {
+  const course = await getCourseBySlug(params.slug);
   if (!course) notFound();
 
   return (

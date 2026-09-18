@@ -3,14 +3,18 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
-import { courses } from '@/lib/data';
+import { getCourses } from '@/lib/sanity';
 
 export const metadata: Metadata = {
   title: 'Courses',
   description: 'Explore English language and exam preparation courses at SETC Dubai, including IELTS, PTE, OET, NAATI CCL, CELPIP, LanguageCert and Spoken English.',
 };
 
-export default function CoursesPage() {
+export const revalidate = 3600;
+
+export default async function CoursesPage() {
+  const courses = await getCourses();
+
   return (
     <main>
       <section className="page-hero">

@@ -1058,5 +1058,5 @@ img { max-width: 100%; display: block; }
 }
 
 body:has(.studio-root) { overflow: hidden; }
-body:has(.studio-root) .site-header, body:has(.studio-root) footer, body:has(.studio-root) .floating-buttons { display: none; }
-.studio-root { min-height: 100vh; background: #fff; }
+body:has(.studio-root) .topbar, body:has(.studio-root) .site-header, body:has(.studio-root) footer, body:has(.studio-root) .floating-buttons { display: none; }
+.studio-root { min-height: 100vh; height: 100vh; background: #fff; }

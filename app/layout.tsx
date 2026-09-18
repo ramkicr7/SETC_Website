@@ -1,10 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
-import { FloatingButtons } from '@/components/layout/FloatingButtons';
-import { PageTransition } from '@/components/layout/PageTransition';
+import { SiteShell } from '@/components/layout/SiteShell';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' });
 
@@ -34,10 +31,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={inter.variable}>
       <body>
-        <Header />
-        <PageTransition>{children}</PageTransition>
-        <Footer />
-        <FloatingButtons />
+        <SiteShell>{children}</SiteShell>
       </body>
     </html>
   );
