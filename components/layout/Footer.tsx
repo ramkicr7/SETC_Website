@@ -30,37 +30,22 @@ export function Footer() {
             <p>A connected education ecosystem bringing together specialised brands across language training, test preparation and international education opportunities.</p>
             <p className="footer-tagline">Learn. Grow. Go Everywhere.</p>
           </div>
-          <div className="footer-links">
+          <div className="footer-links footer-four-columns">
             <div>
               <span>Quick Links</span>
-              <Link href="/">Home</Link>
-              <Link href="/about">About</Link>
-              <Link href="/courses">Courses</Link>
-              <Link href="/learning-options">Learning Options</Link>
-              <Link href="/student-journey">Student Journey</Link>
-              <Link href="/dubai">Dubai</Link>
-              <Link href="/accommodation">Accommodation</Link>
-              <Link href="/blog">Blog</Link>
-              <Link href="/faq">FAQ</Link>
-              <Link href="/contact">Contact</Link>
+              <Link href="/">Home</Link><Link href="/about">About</Link><Link href="/brands">Brands</Link><Link href="/services">Services</Link><Link href="/dubai">Dubai</Link>
             </div>
             <div>
-              <span>Training</span>
-              <Link href="/courses/ielts">IELTS</Link>
-              <Link href="/courses/pte">PTE</Link>
-              <Link href="/courses/oet">OET</Link>
-              <Link href="/courses/naati-ccl">NAATI CCL</Link>
-              <Link href="/courses/celpip">CELPIP</Link>
-              <Link href="/courses/languagecert">LanguageCert</Link>
-              <Link href="/courses/spoken-english">Spoken English</Link>
-              <Link href="/courses/english-language-skills">English Language Skills</Link>
+              <span>Explore</span>
+              <Link href="/accommodation">Accommodation</Link><Link href="/courses">Courses / Language Training</Link><Link href="/blog">Blog</Link><Link href="/faq">FAQ</Link><Link href="/careers">Careers</Link><Link href="/student-journey">Student Journey</Link>
+            </div>
+            <div>
+              <span>Our Brands</span>
+              <Link href="/brands/students-dubai">Students Dubai</Link><Link href="/language-skills">Language Skills Dubai</Link><Link href="/englishwise">EnglishWise UAE</Link>
             </div>
             <div>
               <span>Contact</span>
-              <p>{ADDRESS_LINES.join(', ')}</p>
-              <a href={PHONE_LINK}>{PHONE_NUMBER}</a>
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">WhatsApp us</a>
-              <p className="footer-email-pending">Email: to be confirmed</p>
+              <p>{ADDRESS_LINES.join(', ')}</p><a href={PHONE_LINK}>{PHONE_NUMBER}</a><a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">WhatsApp us</a><Link href="/contact">Enquire Now</Link>
             </div>
           </div>
         </div>

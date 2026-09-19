@@ -1,22 +1,15 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, Globe2, MapPin, Monitor, Users, Target, Compass, Building2 } from 'lucide-react';
+import { ArrowRight, Globe2, MapPin, Monitor, Target, Compass } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
-import { ADDRESS_LINES } from '@/lib/data';
+import { ADDRESS_LINES, services as serviceCards } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Services',
   description: 'Training services at SETC Dubai including exam preparation, Spoken English, language skills, classroom training and online training.',
 };
 
-const services = [
-  { icon: Target, title: 'Exam Preparation', text: 'Structured preparation for IELTS, PTE, OET, NAATI CCL, CELPIP and LanguageCert examinations.' },
-  { icon: Users, title: 'Spoken English Training', text: 'Build practical communication skills and confidence in everyday English.' },
-  { icon: Globe2, title: 'Language Skills Training', text: 'Develop broader English language skills for work, study and daily life.' },
-  { icon: Monitor, title: 'Online Training', text: 'Flexible online learning options for applicable courses. Contact us for availability.' },
-  { icon: MapPin, title: 'Classroom Training', text: 'In-person training at our Dubai center in Al Barsha.' },
-  { icon: Compass, title: 'Learner Guidance', text: 'Support to help you choose the right course and learning format.' },
-];
+const serviceLinks = ['/courses', '/courses', '/global-learning'];
 
 export default function ServicesPage() {
   return (
@@ -32,12 +25,15 @@ export default function ServicesPage() {
 
       <section className="content-section" style={{ background: 'var(--paper)' }}>
         <div className="container">
-          <div className="benefit-grid">
-            {services.map((s, i) => (
-              <Reveal as="article" key={s.title} className="benefit-card" delay={i * 80}>
-                <div className="benefit-icon"><s.icon size={24} /></div>
-                <h3>{s.title}</h3>
-                <p>{s.text}</p>
+          <div className="services-hub-grid">
+            {serviceCards.map((service, i) => (
+              <Reveal as="article" key={service.title} className="service-hub-card" delay={i * 80}>
+                <Link href={serviceLinks[i]} aria-label={`Explore ${service.title}`}>
+                  <span className="service-number">{service.num}</span>
+                  <h2>{service.title}</h2>
+                  <p>{service.text}</p>
+                  <span className="service-card-arrow">Explore <ArrowRight size={17} /></span>
+                </Link>
               </Reveal>
             ))}
           </div>

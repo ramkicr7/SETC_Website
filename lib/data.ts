@@ -90,7 +90,7 @@ export const navItems: NavItem[] = [
     label: 'Brands',
     href: '/brands',
     children: [
-      { label: 'Students Dubai', href: 'https://www.studentsdubai.com' },
+      { label: 'Students Dubai', href: '/brands/students-dubai' },
       { label: 'Language Skills Dubai', href: '/language-skills' },
       { label: 'EnglishWise UAE', href: '/englishwise' },
     ],
@@ -99,17 +99,19 @@ export const navItems: NavItem[] = [
     label: 'Services',
     href: '/services',
     children: [
-      { label: 'Language Training', href: '/courses/spoken-english' },
-      { label: 'Test Preparation', href: '/courses' },
+      { label: 'Language Training · Courses', href: '/courses' },
+      { label: 'IELTS', href: '/courses/ielts' },
+      { label: 'PTE', href: '/courses/pte' },
+      { label: 'OET', href: '/courses/oet' },
+      { label: 'NAATI CCL', href: '/courses/naati-ccl' },
+      { label: 'CELPIP', href: '/courses/celpip' },
+      { label: 'LanguageCert', href: '/courses/languagecert' },
+      { label: 'Spoken English', href: '/courses/spoken-english' },
+      { label: 'English Language Skills', href: '/courses/english-language-skills' },
       { label: 'Study Abroad', href: '/global-learning' },
     ],
   },
-  { label: 'Courses', href: '/courses' },
   { label: 'Dubai', href: '/dubai' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Careers', href: '/careers' },
-  { label: 'FAQ', href: '/faq' },
-  { label: 'Contact', href: '/contact' },
 ];
 
 export const dubaiHighlights = [
