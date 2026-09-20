@@ -46,6 +46,7 @@ export function Footer() {
             <div>
               <span>Contact</span>
               <p>{ADDRESS_LINES.join(', ')}</p><a href={PHONE_LINK}>{PHONE_NUMBER}</a><a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">WhatsApp us</a><Link href="/contact">Enquire Now</Link>
+              <p className="footer-email-pending">Email: to be confirmed</p>
             </div>
           </div>
         </div>

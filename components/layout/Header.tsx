@@ -3,15 +3,42 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import type { ReactNode } from 'react';
 import { useEffect, useState } from 'react';
-import { ArrowRight, ChevronDown, Menu, Phone, X } from 'lucide-react';
-import { navItems, WHATSAPP_LINK, PHONE_LINK, PHONE_NUMBER } from '@/lib/data';
+import { ArrowRight, ChevronDown, ChevronRight, Menu, Phone, X } from 'lucide-react';
+import { navItems, WHATSAPP_LINK, PHONE_LINK, PHONE_NUMBER, type NavChild, type NavItem } from '@/lib/data';
+
+function isExternalLink(href: string) {
+  return href.startsWith('http');
+}
+
+function isItemActive(item: NavItem | NavChild, pathname: string): boolean {
+  if (!isExternalLink(item.href) && (pathname === item.href || pathname.startsWith(`${item.href}/`))) return true;
+  return item.children?.some((child) => isItemActive(child, pathname)) ?? false;
+}
+
+function NavLink({ item, className, children }: { item: NavChild | NavItem; className?: string; children?: ReactNode }) {
+  if (isExternalLink(item.href)) {
+    return (
+      <a href={item.href} target="_blank" rel="noopener noreferrer" className={className}>
+        {children ?? item.label}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={item.href} className={className}>
+      {children ?? item.label}
+    </Link>
+  );
+}
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const [mobileNestedExpanded, setMobileNestedExpanded] = useState<string | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -24,6 +51,7 @@ export function Header() {
   useEffect(() => {
     setMenuOpen(false);
     setMobileExpanded(null);
+    setMobileNestedExpanded(null);
   }, [pathname]);
 
   const isHomePage = pathname === '/';
@@ -32,12 +60,19 @@ export function Header() {
   return (
     <>
       <div className="topbar">
-        <div className="container topbar-inner">
-          <span><span className="topbar-dot" /> Dubai, UAE</span>
-          <div className="topbar-links">
-            <a href={PHONE_LINK}><Phone size={12} /> {PHONE_NUMBER}</a>
-            <span className="topbar-separator" />
-            <span>Learn. Grow. Go Everywhere.</span>
+        <div className="topbar-ticker" aria-label="SETC information">
+          <div className="topbar-track">
+            {[0, 1].map((loop) => (
+              <div className="topbar-marquee-group" aria-hidden={loop === 1} key={loop}>
+                <span><span className="topbar-dot" /> Dubai, UAE</span>
+                <span className="topbar-separator" />
+                <a href={PHONE_LINK}><Phone size={12} /> {PHONE_NUMBER}</a>
+                <span className="topbar-separator" />
+                <span>Learn. Grow. Go Everywhere.</span>
+                <span className="topbar-separator" />
+                <Link href="/contact" className="topbar-enquiry">Enquire Now <ArrowRight size={12} /></Link>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -56,28 +91,37 @@ export function Header() {
                 onMouseLeave={() => setOpenDropdown(null)}
                 onFocus={() => item.children && setOpenDropdown(item.href)}
               >
-                <Link
-                  href={item.href}
-                  className={`${pathname === item.href || pathname.startsWith(`${item.href}/`) || (item.children?.some(c => c.href === pathname)) ? 'nav-active' : ''} ${item.children ? 'has-dropdown' : ''}`}
+                <NavLink
+                  item={item}
+                  className={`${isItemActive(item, pathname) ? 'nav-active' : ''} ${item.children ? 'has-dropdown' : ''}`}
                 >
                   {item.label}
                   {item.children && <ChevronDown size={14} className="dropdown-chevron" />}
-                </Link>
+                </NavLink>
                 {item.children && openDropdown === item.href && (
-                  <div className="dropdown-menu">
+                  <div className="dropdown-menu" onFocus={() => setOpenDropdown(item.href)}>
                     {item.children.map((child) => {
-                      const isExternal = child.href.startsWith('http');
-                      if (isExternal) {
-                        return (
-                          <a key={child.href} href={child.href} target="_blank" rel="noopener noreferrer">
-                            {child.label}
-                          </a>
-                        );
-                      }
                       return (
-                        <Link key={child.href} href={child.href} className={pathname === child.href ? 'dropdown-active' : ''}>
-                          {child.label}
-                        </Link>
+                        <div key={child.href} className="dropdown-row">
+                          <NavLink item={child} className={isItemActive(child, pathname) ? 'dropdown-active' : ''}>
+                            <span>{child.label}</span>
+                            {child.children && <ChevronRight size={14} />}
+                          </NavLink>
+                          {child.children && (
+                            <div className="flyout-menu">
+                              {child.children.map((nested) => (
+                                <NavLink
+                                  key={`${child.href}-${nested.href}-${nested.label}`}
+                                  item={nested}
+                                  className={`${pathname === nested.href ? 'dropdown-active' : ''} ${nested.groupLabel ? 'flyout-related-link' : ''}`}
+                                >
+                                  {nested.groupLabel && <small>{nested.groupLabel}</small>}
+                                  <span>{nested.label}</span>
+                                </NavLink>
+                              ))}
+                            </div>
+                          )}
+                        </div>
                       );
                     })}
                   </div>
@@ -113,13 +157,32 @@ export function Header() {
                       </button>
                       {mobileExpanded === item.href && (
                         <div className="mobile-nav-children">
-                          <Link href={item.href}>View all {item.label}</Link>
+                          <NavLink item={item}>View all {item.label}</NavLink>
                           {item.children.map((child) => {
-                            const isExternal = child.href.startsWith('http');
-                            if (isExternal) {
-                              return <a key={child.href} href={child.href} target="_blank" rel="noopener noreferrer">{child.label}</a>;
-                            }
-                            return <Link key={child.href} href={child.href}>{child.label}</Link>;
+                            if (!child.children) return <NavLink key={child.href} item={child} />;
+
+                            return (
+                              <div key={child.href} className="mobile-nav-nested">
+                                <button
+                                  className="mobile-nav-subparent"
+                                  onClick={() => setMobileNestedExpanded(mobileNestedExpanded === child.href ? null : child.href)}
+                                  aria-expanded={mobileNestedExpanded === child.href}
+                                >
+                                  {child.label}
+                                  <ChevronDown size={15} className={mobileNestedExpanded === child.href ? 'chevron-rotated' : ''} />
+                                </button>
+                                {mobileNestedExpanded === child.href && (
+                                  <div className="mobile-nav-grandchildren">
+                                    {child.children.map((nested) => (
+                                      <NavLink key={`${child.href}-${nested.href}-${nested.label}`} item={nested}>
+                                        {nested.groupLabel && <small>{nested.groupLabel}</small>}
+                                        <span>{nested.label}</span>
+                                      </NavLink>
+                                    ))}
+                                  </div>
+                                )}
+                              </div>
+                            );
                           })}
                         </div>
                       )}

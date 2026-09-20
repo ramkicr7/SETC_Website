@@ -80,7 +80,7 @@ export const faqs = [
   { q: 'Do you offer immigration or visa services?', a: 'No. Students Everywhere Training Center is a training center focused on English language and examination preparation. We do not provide immigration, visa or study-abroad consultancy services.' },
 ];
 
-export type NavChild = { label: string; href: string };
+export type NavChild = { label: string; href: string; children?: NavChild[]; groupLabel?: string };
 export type NavItem = { label: string; href: string; children?: NavChild[] };
 
 export const navItems: NavItem[] = [
@@ -90,25 +90,66 @@ export const navItems: NavItem[] = [
     label: 'Brands',
     href: '/brands',
     children: [
-      { label: 'Students Dubai', href: '/brands/students-dubai' },
-      { label: 'Language Skills Dubai', href: '/language-skills' },
-      { label: 'EnglishWise UAE', href: '/englishwise' },
+      {
+        label: 'Students Dubai',
+        href: '/brands/students-dubai',
+        children: [
+          { label: 'Students Dubai', href: '/brands/students-dubai' },
+        ],
+      },
+      {
+        label: 'Language Skills Dubai',
+        href: '/language-skills',
+        children: [
+          { label: 'Language Skills Dubai', href: '/language-skills' },
+          { label: 'Related Blog Posts', href: '/blog/improving-spoken-english', groupLabel: 'Related Blog Posts' },
+        ],
+      },
+      {
+        label: 'EnglishWise UAE',
+        href: '/englishwise',
+        children: [
+          { label: 'EnglishWise UAE', href: '/englishwise' },
+          { label: 'Related Blog Posts', href: '/blog/ielts-preparation-tips', groupLabel: 'Related Blog Posts' },
+        ],
+      },
     ],
   },
   {
     label: 'Services',
     href: '/services',
     children: [
-      { label: 'Language Training · Courses', href: '/courses' },
-      { label: 'IELTS', href: '/courses/ielts' },
-      { label: 'PTE', href: '/courses/pte' },
-      { label: 'OET', href: '/courses/oet' },
-      { label: 'NAATI CCL', href: '/courses/naati-ccl' },
-      { label: 'CELPIP', href: '/courses/celpip' },
-      { label: 'LanguageCert', href: '/courses/languagecert' },
-      { label: 'Spoken English', href: '/courses/spoken-english' },
-      { label: 'English Language Skills', href: '/courses/english-language-skills' },
-      { label: 'Study Abroad', href: '/global-learning' },
+      {
+        label: 'Language Training',
+        href: '/courses/spoken-english',
+        children: [
+          { label: 'Language Training', href: '/courses/spoken-english' },
+          { label: 'Spoken English', href: '/courses/spoken-english' },
+          { label: 'English Language Skills', href: '/courses/english-language-skills' },
+          { label: 'Related Blog Posts', href: '/blog/improving-spoken-english', groupLabel: 'Related Blog Posts' },
+        ],
+      },
+      {
+        label: 'Test Preparation',
+        href: '/courses',
+        children: [
+          { label: 'Test Preparation', href: '/courses' },
+          { label: 'IELTS', href: '/courses/ielts' },
+          { label: 'PTE', href: '/courses/pte' },
+          { label: 'OET', href: '/courses/oet' },
+          { label: 'NAATI CCL', href: '/courses/naati-ccl' },
+          { label: 'CELPIP', href: '/courses/celpip' },
+          { label: 'LanguageCert', href: '/courses/languagecert' },
+          { label: 'Related Blog Posts', href: '/blog/ielts-preparation-tips', groupLabel: 'Related Blog Posts' },
+        ],
+      },
+      {
+        label: 'Study Abroad',
+        href: '/global-learning',
+        children: [
+          { label: 'Study Abroad', href: '/global-learning' },
+        ],
+      },
     ],
   },
   { label: 'Dubai', href: '/dubai' },
