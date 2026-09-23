@@ -1,0 +1,2 @@
+import { GuidancePage } from '@/components/GuidancePage'
+export default function StudentJourneyPathway() { return <GuidancePage title="Student journey" intro="Understand the steps from first enquiry to starting your training." cards={[{ title: 'Your learning journey', text: 'See the existing SETC journey information.', href: '/student-journey' }, { title: 'Start a conversation', text: 'Contact the team about your next step.', href: '/contact' }]} /> }

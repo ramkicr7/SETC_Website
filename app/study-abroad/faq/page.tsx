@@ -1,0 +1,2 @@
+import { GuidancePage } from '@/components/GuidancePage'
+export default function StudyAbroadFaq() { return <GuidancePage title="Students Dubai FAQ" intro="Find answers to common questions about learning, Dubai and the Students Dubai pathway." cards={[{ title: 'Frequently asked questions', text: 'Review the current SETC FAQ information.', href: '/faq' }, { title: 'Contact the team', text: 'Ask a question directly when you need more information.', href: '/contact' }]} /> }

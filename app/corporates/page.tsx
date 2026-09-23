@@ -1,0 +1,4 @@
+import type { Metadata } from 'next'
+import { GuidancePage } from '@/components/GuidancePage'
+export const metadata: Metadata = { title: 'Corporates', description: 'Corporate language and communication training pathways through SETC.' }
+export default function CorporatesPage() { return <GuidancePage title="Corporate learning pathways" intro="Explore corporate-focused English and language skills training pathways for teams and organisations." eyebrow="For organisations" cards={[{ title: 'EnglishWise Corporate', text: 'Explore EnglishWise corporate training information.', href: '/corporates/englishwise-corporate' }, { title: 'Language Skills Corporate', text: 'Explore communication and language skills pathways for teams.', href: '/corporates/language-skills-corporate' }, { title: 'Talk to our team', text: 'Discuss your organisation’s learning goals and current requirements.', href: '/contact' }]} /> }

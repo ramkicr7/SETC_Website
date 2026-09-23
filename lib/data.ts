@@ -85,74 +85,38 @@ export type NavItem = { label: string; href: string; children?: NavChild[] };
 
 export const navItems: NavItem[] = [
   { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
-  {
-    label: 'Brands',
-    href: '/brands',
-    children: [
-      {
-        label: 'Students Dubai',
-        href: '/brands/students-dubai',
-        children: [
-          { label: 'Students Dubai', href: '/brands/students-dubai' },
-        ],
-      },
-      {
-        label: 'Language Skills Dubai',
-        href: '/language-skills',
-        children: [
-          { label: 'Language Skills Dubai', href: '/language-skills' },
-          { label: 'Related Blog Posts', href: '/blog/improving-spoken-english', groupLabel: 'Related Blog Posts' },
-        ],
-      },
-      {
-        label: 'EnglishWise UAE',
-        href: '/englishwise',
-        children: [
-          { label: 'EnglishWise UAE', href: '/englishwise' },
-          { label: 'Related Blog Posts', href: '/blog/ielts-preparation-tips', groupLabel: 'Related Blog Posts' },
-        ],
-      },
-    ],
-  },
-  {
-    label: 'Services',
-    href: '/services',
-    children: [
-      {
-        label: 'Language Training',
-        href: '/courses/spoken-english',
-        children: [
-          { label: 'Language Training', href: '/courses/spoken-english' },
-          { label: 'Spoken English', href: '/courses/spoken-english' },
-          { label: 'English Language Skills', href: '/courses/english-language-skills' },
-          { label: 'Related Blog Posts', href: '/blog/improving-spoken-english', groupLabel: 'Related Blog Posts' },
-        ],
-      },
-      {
-        label: 'Test Preparation',
-        href: '/courses',
-        children: [
-          { label: 'Test Preparation', href: '/courses' },
-          { label: 'IELTS', href: '/courses/ielts' },
-          { label: 'PTE', href: '/courses/pte' },
-          { label: 'OET', href: '/courses/oet' },
-          { label: 'NAATI CCL', href: '/courses/naati-ccl' },
-          { label: 'CELPIP', href: '/courses/celpip' },
-          { label: 'LanguageCert', href: '/courses/languagecert' },
-          { label: 'Related Blog Posts', href: '/blog/ielts-preparation-tips', groupLabel: 'Related Blog Posts' },
-        ],
-      },
-      {
-        label: 'Study Abroad',
-        href: '/global-learning',
-        children: [
-          { label: 'Study Abroad', href: '/global-learning' },
-        ],
-      },
-    ],
-  },
-  { label: 'Dubai', href: '/dubai' },
+  { label: 'EnglishWise UAE', href: '/englishwise', children: [
+    { label: 'Overview', href: '/englishwise' },
+    { label: 'IELTS', href: '/courses/ielts' }, { label: 'PTE', href: '/courses/pte' }, { label: 'OET', href: '/courses/oet' },
+    { label: 'NAATI CCL', href: '/courses/naati-ccl' }, { label: 'CELPIP', href: '/courses/celpip' }, { label: 'LanguageCert', href: '/courses/languagecert' },
+    { label: 'General English', href: '/courses/english-language-skills' }, { label: 'Corporate Training', href: '/englishwise/corporate-training' },
+    { label: 'Exam Tips', href: '/blog/ielts-preparation-tips' }, { label: 'FAQ', href: '/faq' },
+  ] },
+  { label: 'Language Skills Dubai', href: '/language-skills', children: [
+    { label: 'Overview', href: '/language-skills' },
+    { label: 'English', href: '/language-skills/english' }, { label: 'Chinese', href: '/language-skills/chinese' }, { label: 'French', href: '/language-skills/french' }, { label: 'Arabic', href: '/language-skills/arabic' }, { label: 'Spanish', href: '/language-skills/spanish' }, { label: 'German', href: '/language-skills/german' }, { label: 'Italian', href: '/language-skills/italian' }, { label: 'Japanese', href: '/language-skills/japanese' }, { label: 'Korean', href: '/language-skills/korean' },
+    { label: 'Regular Classes', href: '/language-skills/english/regular' }, { label: 'Intensive Classes', href: '/language-skills/english/intensive' },
+    { label: 'Private Classes', href: '/language-skills/english/private' }, { label: 'Online Classes', href: '/language-skills/english/online' },
+    { label: 'Kids & Juniors', href: '/language-skills/english/kids' }, { label: 'Resources', href: '/language-skills/blog' },
+  ] },
+  { label: 'Students Dubai', href: '/study-abroad', children: [
+    { label: 'Overview', href: '/study-abroad' }, { label: 'Study Abroad Guidance', href: '/study-abroad/guidance' },
+    { label: 'Student Experience in Dubai', href: '/study-abroad/student-experience' }, { label: 'Accommodation', href: '/study-abroad/accommodation' },
+    { label: 'Learning Options', href: '/study-abroad/learning-options' }, { label: 'Student Journey', href: '/study-abroad/student-journey' }, { label: 'FAQ', href: '/study-abroad/faq' },
+  ] },
+  { label: 'Corporates', href: '/corporates', children: [
+    { label: 'Overview', href: '/corporates' }, { label: 'EnglishWise Corporate', href: '/corporates/englishwise-corporate' },
+    { label: 'Language Skills Corporate', href: '/corporates/language-skills-corporate' }, { label: 'Contact', href: '/contact' },
+  ] },
+  { label: 'About SETC', href: '/about', children: [
+    { label: 'About SETC', href: '/about' }, { label: 'Our Brands', href: '/brands' }, { label: 'Dubai', href: '/dubai' },
+    { label: 'Careers', href: '/careers' }, { label: 'Contact', href: '/contact' },
+  ] },
+  { label: 'Blog / Insights', href: '/blog', children: [
+    { label: 'All Insights', href: '/blog' }, { label: 'EnglishWise', href: '/blog/category/englishwise' },
+    { label: 'Language Skills', href: '/language-skills/blog' }, { label: 'Study Abroad', href: '/blog/category/study-abroad' },
+  ] },
+  { label: 'Contact', href: '/contact' },
 ];
 
 export const dubaiHighlights = [
@@ -232,11 +196,18 @@ export const dubaiImage = 'https://images.pexels.com/photos/2044434/pexels-photo
 export const accommodationImage = 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&h=650&w=940';
 export const onlineLearningImage = 'https://images.pexels.com/photos/7776433/pexels-photo-7776433.jpeg?auto=compress&cs=tinysrgb&h=650&w=940';
 
-export const languages = [
-  { name: 'English', script: 'English', native: 'English', note: 'Primary training language' },
-  { name: '中文', script: '中文', native: 'Chinese / Mandarin', note: 'CMS-ready — available when confirmed' },
-  { name: 'Français', script: 'Français', native: 'French', note: 'CMS-ready — available when confirmed' },
-  { name: 'العربية', script: 'العربية', native: 'Arabic', note: 'CMS-ready — available when confirmed' },
+export type LearningLanguage = { slug: string; name: string; native: string; note: string };
+
+export const languages: LearningLanguage[] = [
+  { slug: 'english', name: 'English', native: 'English', note: 'Primary training language' },
+  { slug: 'chinese', name: 'Chinese', native: '中文 / Mandarin', note: 'Language learning pathway' },
+  { slug: 'french', name: 'French', native: 'Français', note: 'Language learning pathway' },
+  { slug: 'arabic', name: 'Arabic', native: 'العربية', note: 'Language learning pathway' },
+  { slug: 'spanish', name: 'Spanish', native: 'Español', note: 'Language learning pathway' },
+  { slug: 'german', name: 'German', native: 'Deutsch', note: 'Language learning pathway' },
+  { slug: 'italian', name: 'Italian', native: 'Italiano', note: 'Language learning pathway' },
+  { slug: 'japanese', name: 'Japanese', native: '日本語', note: 'Language learning pathway' },
+  { slug: 'korean', name: 'Korean', native: '한국어', note: 'Language learning pathway' },
 ];
 
 export type Brand = {
