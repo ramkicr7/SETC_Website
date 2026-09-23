@@ -1,0 +1,4 @@
+import type { Metadata } from 'next'
+import { GuidancePage } from '@/components/GuidancePage'
+export const metadata: Metadata = { title: 'EnglishWise Corporate', description: 'EnglishWise corporate training information.' }
+export default function EnglishWiseCorporate() { return <GuidancePage title="EnglishWise Corporate" intro="English language and test preparation pathways for organisations. Discuss your team’s goals and the relevant current options with our team." cards={[{ title: 'Training discussion', text: 'Share your organisation’s goals and current requirements.', href: '/contact' }, { title: 'EnglishWise pathway', text: 'Explore the wider EnglishWise exam and language training ecosystem.', href: '/englishwise' }, { title: 'Existing corporate training', text: 'View the existing EnglishWise corporate training route.', href: '/englishwise/corporate-training' }]} /> }

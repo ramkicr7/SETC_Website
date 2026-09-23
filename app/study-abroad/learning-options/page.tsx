@@ -1,0 +1,2 @@
+import { GuidancePage } from '@/components/GuidancePage'
+export default function LearningOptionsPathway() { return <GuidancePage title="Learning options" intro="Explore the existing SETC learning formats and discuss which option may suit your goal." cards={[{ title: 'Learning options', text: 'Review the current SETC learning format information.', href: '/learning-options' }, { title: 'Courses', text: 'Browse available English language and test preparation courses.', href: '/courses' }]} /> }

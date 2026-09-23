@@ -1,0 +1,4 @@
+import type { Metadata } from 'next'
+import { GuidancePage } from '@/components/GuidancePage'
+export const metadata: Metadata = { title: 'Student Experience in Dubai', description: 'Explore the Dubai student experience layer through Students Dubai.' }
+export default function StudentExperience() { return <GuidancePage title="Student Experience in Dubai" intro="Discover the learning, location and support information connected to the Students Dubai pathway." cards={[{ title: 'Dubai', text: 'Explore the city and its international learning environment.', href: '/dubai' }, { title: 'Accommodation', text: 'Discuss current accommodation information and availability.', href: '/accommodation' }, { title: 'Learning options', text: 'Review the formats and pathways currently represented on the site.', href: '/learning-options' }]} /> }

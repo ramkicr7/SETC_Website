@@ -1,0 +1,4 @@
+import type { Metadata } from 'next'
+import { GuidancePage } from '@/components/GuidancePage'
+export const metadata: Metadata = { title: 'Language Skills Corporate', description: 'Language Skills corporate training information.' }
+export default function LanguageSkillsCorporate() { return <GuidancePage title="Language Skills Corporate" intro="Communication and language learning pathways for organisations. Contact our team to discuss current delivery options." cards={[{ title: 'Discuss team goals', text: 'Tell us what your organisation wants to develop.', href: '/contact' }, { title: 'Language Skills Dubai', text: 'Explore the wider language learning ecosystem.', href: '/language-skills' }, { title: 'Delivery formats', text: 'Ask about current classroom, online or tailored options.', href: '/contact' }]} /> }

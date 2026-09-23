@@ -1072,6 +1072,36 @@ img { max-width: 100%; display: block; }
 .brand-detail-focus-list strong { color: var(--navy); font-size: 17px; }
 .brand-detail-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 42px; }
 .role-details { margin-top: auto; border-top: 1px solid var(--line); padding-top: 14px; color: var(--muted); font-size: 13px; }
+.route-card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 34px; }
+.route-card-grid-small { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 18px; }
+.route-card { display: flex; min-height: 190px; flex-direction: column; padding: 26px; border: 1px solid var(--line); border-radius: 8px; background: white; color: var(--navy); transition: transform .25s, box-shadow .25s, border-color .25s; }
+.route-card:hover { transform: translateY(-4px); border-color: var(--blue); box-shadow: 0 14px 30px rgba(3,24,61,.1); }
+.route-card > span { color: var(--blue); font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.route-card h2, .route-card h3 { margin: 12px 0 10px; color: var(--navy); font-size: 21px; letter-spacing: -.03em; }
+.route-card p { margin: 0; color: var(--muted); line-height: 1.65; font-size: 14px; }
+.route-card strong { display: inline-flex; align-items: center; gap: 7px; margin-top: auto; padding-top: 20px; color: var(--blue); font-size: 12px; }
+.brand-hub-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: end; }
+.brand-hub-intro h2 { margin: 15px 0 0; color: var(--navy); font-size: clamp(32px, 4vw, 54px); line-height: 1; letter-spacing: -.05em; }
+.brand-hub-intro p { color: var(--muted); font-size: 17px; line-height: 1.75; }
+.guidance-cta { margin-top: 62px; padding: 36px; background: var(--navy); color: white; }
+.guidance-cta h2 { margin: 0 0 8px; color: white; font-size: 30px; }
+.guidance-cta p { color: #bed0e4; margin-bottom: 22px; }
+.blog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.blog-card { border: 1px solid var(--line); background: white; }
+.blog-card a { display: block; height: 100%; color: var(--navy); }
+.blog-card-image { position: relative; height: 190px; overflow: hidden; }
+.blog-card-image img { object-fit: cover; }
+.blog-card > a > div { padding: 22px; }
+.blog-card span { color: var(--blue); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; }
+.blog-card h2 { margin: 12px 0 10px; font-size: 20px; }
+.blog-card p { color: var(--muted); line-height: 1.65; font-size: 14px; }
+.blog-card strong { display: inline-flex; align-items: center; gap: 7px; color: var(--blue); font-size: 12px; }
+.empty-state { grid-column: 1 / -1; padding: 48px; border: 1px dashed var(--line); text-align: center; }
+.empty-state h2 { color: var(--navy); }
+.empty-state p { color: var(--muted); margin-bottom: 22px; }
+@media (max-width: 900px) { .route-card-grid, .route-card-grid-small, .blog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .brand-hub-intro { grid-template-columns: 1fr; gap: 20px; } }
+@media (max-width: 600px) { .route-card-grid, .route-card-grid-small, .blog-grid { grid-template-columns: 1fr; } .brand-hub-intro { gap: 10px; } .guidance-cta { padding: 26px; } }
+
 
 .setc-partners { color: white; background: var(--navy-deep); padding: 80px 0; position: relative; overflow: hidden; }
 .setc-partners::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 82% 50%, rgba(6,142,226,.24), transparent 38%), linear-gradient(110deg, transparent 0 45%, rgba(255,255,255,.035) 45% 45.2%, transparent 45.2%); pointer-events: none; }

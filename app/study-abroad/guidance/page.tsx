@@ -1,0 +1,4 @@
+import type { Metadata } from 'next'
+import { GuidancePage } from '@/components/GuidancePage'
+export const metadata: Metadata = { title: 'Study Abroad Guidance', description: 'Study abroad guidance information from Students Dubai.' }
+export default function Guidance() { return <GuidancePage title="Study Abroad Guidance" intro="Discuss your goals and understand the relevant language, training and international study pathways available through the SETC ecosystem." cards={[{ title: 'Start with your goal', text: 'Tell us what you are exploring and where you want to go.', href: '/contact' }, { title: 'Build relevant skills', text: 'Explore language and test preparation pathways.', href: '/courses' }, { title: 'Understand the next step', text: 'Our team can explain the current information and options available.', href: '/student-journey' }]} /> }

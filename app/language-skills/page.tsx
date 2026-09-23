@@ -1,45 +1,10 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import Image from 'next/image';
-import { ArrowRight } from 'lucide-react';
-import { Reveal } from '@/components/Reveal';
-import { BrandDetailContent } from '@/components/BrandDetailContent';
-import { brands } from '@/lib/data';
+import type { Metadata } from 'next'
+import { Breadcrumbs } from '@/components/Breadcrumbs'
+import { RouteCard } from '@/components/RouteCard'
+import { languages } from '@/lib/data'
 
-export const metadata: Metadata = {
-  title: 'Language Skills Dubai',
-  description: 'Language Skills Dubai is a language-focused brand supporting learners who want to develop practical communication and language skills.',
-};
+export const metadata: Metadata = { title: 'Language Skills Dubai', description: 'Language learning pathways and communication skills through Language Skills Dubai.' }
 
 export default function LanguageSkillsPage() {
-  return (
-    <main>
-      <section className="page-hero">
-        <div className="container">
-          <div className="breadcrumb"><Link href="/">Home</Link> / <span>Language Skills</span></div>
-          <div className="eyebrow eyebrow-light" style={{ marginTop: 16 }}><span /> Associated Brand</div>
-          <h1>Language Skills Dubai</h1>
-          <p>Practical communication and language skills training.</p>
-        </div>
-      </section>
-
-      <section className="content-section" style={{ background: 'var(--paper)' }}>
-        <div className="container brand-split">
-          <Reveal className="brand-info">
-            <div className="eyebrow"><span /> About Language Skills</div>
-            <h2>Develop Practical Language Skills</h2>
-            <p>Language Skills Dubai is a language-focused brand supporting learners who want to develop practical communication and language skills. The brand can support relevant English language learning and skills development requirements.</p>
-            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-              <Link className="button button-outline" href="/contact">Enquire Now <ArrowRight size={17} /></Link>
-              <Link className="button button-blue" href="/brands">All Brands <ArrowRight size={17} /></Link>
-            </div>
-          </Reveal>
-          <Reveal className="brand-visual brand-visual-light" delay={150}>
-            <Image src="/assets/images/brands/Languageskills.png" alt="Language Skills Training Center" width={260} height={190} className="brand-logo-img" />
-          </Reveal>
-        </div>
-      </section>
-      <BrandDetailContent name="Language Skills Dubai" description={brands.find((brand) => brand.name === 'Language Skills Dubai')?.description ?? 'Focused language training designed to help learners develop practical communication skills.'} focus={['Language Training']} />
-    </main>
-  );
+  return <main><section className="page-hero"><div className="container"><Breadcrumbs items={[{ label: 'Language Skills Dubai' }]} /><div className="eyebrow eyebrow-light" style={{ marginTop: 16 }}><span /> Language Skills Dubai</div><h1>Learn languages for real life.</h1><p>Communication-focused language learning for study, work, travel and everyday confidence.</p></div></section><section className="content-section"><div className="container brand-hub-intro"><div><div className="eyebrow"><span /> A different pathway</div><h2>Language learning beyond exam preparation.</h2></div><p>Language Skills Dubai is focused on practical communication and language development. Explore the languages and delivery formats currently represented in the SETC pathway.</p></div></section><section className="content-section" style={{ background: 'var(--paper)' }}><div className="container"><div className="eyebrow"><span /> Languages</div><h2>Choose a language.</h2><div className="route-card-grid">{languages.map((language) => <RouteCard key={language.slug} href={`/language-skills/${language.slug}`} eyebrow={language.native} title={language.name} text={language.note} />)}</div><div className="route-card-grid route-card-grid-small"><RouteCard href="/language-skills/english/regular" title="Regular Classes" text="A structured language learning format." /><RouteCard href="/language-skills/english/intensive" title="Intensive Classes" text="A more concentrated learning format." /><RouteCard href="/language-skills/english/private" title="Private Classes" text="Discuss a more individual learning format." /><RouteCard href="/language-skills/blog" title="Resources" text="Read the current language skills insight available on the site." /></div></div></section></main>
 }

@@ -1,0 +1,2 @@
+import { GuidancePage } from '@/components/GuidancePage'
+export default function AccommodationPathway() { return <GuidancePage title="Student accommodation" intro="Review accommodation information for learners exploring Dubai and discuss current availability with our team." cards={[{ title: 'Accommodation information', text: 'Options and availability should be confirmed directly with the team.', href: '/accommodation' }, { title: 'Contact us', text: 'Ask about current arrangements and relevant next steps.', href: '/contact' }]} /> }
